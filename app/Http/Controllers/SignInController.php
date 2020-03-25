@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RequestFormSignin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,7 +13,7 @@ class SignInController extends Controller
         return view('signin.signin');
     }
 
-    public function signin(Request $request)
+    public function signin(RequestFormSignin $request)
     {
         $data = [
             'email' => $request->email,
@@ -23,7 +24,7 @@ class SignInController extends Controller
             return redirect('/admin/home');
 
         }
-        return redirect('/signin');
+        return back()->with('wrong', "Wrong password! Try again!");
     }
 
     public function logout()
