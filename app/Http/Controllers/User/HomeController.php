@@ -16,14 +16,21 @@ class HomeController extends Controller
         $posts = post::where('status',1)->orderBy('created_at','DESC')->paginate(6);
 //        $postCate = $category->posts();
 
-        $postCate = DB::table('category_posts')
+        $postLichsu= DB::table('category_posts')
             ->join('categories', 'category_posts.category_id', '=', 'categories.id')
             ->join('posts', 'category_posts.post_id', '=', 'posts.id')
-            ->where('categories.slug', '=', 'doi-song')
-            ->take(1)
-            ->get();
+            ->where('categories.slug', '=', 'lich-su')
+            ->first();
 
-        return view('user.blog', compact('posts','postCate'));
+        $postChinhtri= DB::table('category_posts')
+            ->join('categories', 'category_posts.category_id', '=', 'categories.id')
+            ->join('posts', 'category_posts.post_id', '=', 'posts.id')
+            ->where('categories.slug', '=', 'chinh-tri')
+            ->first();
+
+
+
+        return view('user.blog', compact('posts','postLichsu','postChinhtri'));
     }
 
     public function tag(tag $tag){

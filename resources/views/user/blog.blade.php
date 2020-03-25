@@ -106,12 +106,12 @@
                 <div class="row align-items-stretch retro-layout">
 
                     <div class="col-md-5 order-md-2">
-                        <a href="{{route('post',$post->slug)}}" class="hentry img-1 h-100 gradient"
-                           style="background-image: url('{{Storage::disk('local')->url($post->image)}}');">
-                            <span class="post-category text-white bg-danger"></span>
+                        <a href="{{route('post',$postChinhtri->slug)}}" class="hentry img-1 h-100 gradient"
+                           style="background-image: url('{{Storage::disk('local')->url($postChinhtri->image)}}');">
+                            <span class="post-category text-white bg-success">{{$postChinhtri->name}}</span>
                             <div class="text">
-                                <h2>{{$post->title}}</h2>
-                                <span>{{$post->created_at->diffForHumans()}}</span>
+                                <h2>{{$postChinhtri->title}}</h2>
+                                <span>{{$postChinhtri->created_at}}</span>
                             </div>
                         </a>
                     </div>
@@ -120,12 +120,12 @@
 
                     <div class="col-md-7">
 
-                        <a href="{{route('post',$post->slug)}}" class="hentry img-2 v-height mb30 gradient"
-                           style="background-image: url('{{Storage::disk('local')->url($post->image)}}');">
-                            <span class="post-category text-white bg-success">Nature</span>
+                        <a href="{{route('post',$postLichsu->slug)}}" class="hentry img-2 v-height mb30 gradient"
+                           style="background-image: url('{{Storage::disk('local')->url($postLichsu->image)}}');">
+                            <span class="post-category text-white bg-success">{{$postLichsu->name}}</span>
                             <div class="text text-sm">
-                                <h2>{{$post->title}}</h2>
-                                <span>{{$post->created_at->diffForHumans()}}</span>
+                                <h2>{{$postLichsu->title}}</h2>
+                                <span>{{$postLichsu->created_at}}</span>
                             </div>
                         </a>
 
@@ -138,6 +138,7 @@
                                 </div>
                             </a>
                             <a href="{{route('post',$post->slug)}}" class="hentry v-height img-2 ml-auto gradient" style="background-image: url('{{Storage::disk('local')->url($post->image)}}');">
+
                                 <span class="post-category text-white bg-warning">Lifestyle</span>
                                 <div class="text text-sm">
                                     <h2>{{$post->title}}</h2>
