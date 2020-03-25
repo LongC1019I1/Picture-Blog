@@ -39,18 +39,31 @@
 					</span>
 
 
-                <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                    <input class="input100" type="email" name="email">
+                <div class="wrap-input100 validate-input" data-validate = "Valid  is required: ex@abc.xyz">
+                    <input class="input100 @error('email') alert-danger @enderror" type="email" name="email" id="email" value="{{ old('email') }}">
                     <span class="focus-input100"></span>
                     <span class="label-input100">Email</span>
                 </div>
 
+                @error('email')
+                <p style="color: red">{{ $message }}</p>
+                @enderror
+
 
                 <div class="wrap-input100 validate-input" data-validate="Password is required">
-                    <input class="input100" type="password" name="password">
+                    <input class="input100 @error('password') alert-danger @enderror" type="password" name="password"
+                           id="password" value="{{ old('password') }}">
                     <span class="focus-input100"></span>
                     <span class="label-input100">Password</span>
                 </div>
+
+                @error('password')
+                <p style="color: red">{{ $message }}</p>
+                @else
+                    @if(Session::has('wrong'))
+                        <p style="color: red">{{Session::get('wrong')}}</p>
+                    @endif
+                    @enderror
 
                 <div class="flex-sb-m w-full p-t-3 p-b-32">
                     <div class="contact100-form-checkbox">
