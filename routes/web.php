@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 
+Route::get('/signin', 'SignInController@index')->name('signin.index');
+Route::post('/signin', 'SignInController@signIn')->name('sigin');
+
 // USer Routes
 
 Route::group(['namespace' => 'User'], function () {
