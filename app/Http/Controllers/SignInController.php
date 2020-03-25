@@ -23,6 +23,12 @@ class SignInController extends Controller
             return redirect('/admin/home');
 
         }
-        return back();
+        return redirect('/signin');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/signin');
     }
 }

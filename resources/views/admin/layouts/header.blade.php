@@ -38,7 +38,7 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="btn btn-default pull-right">
-                      <a href="">
+                      <a href="{{route('logout')}}">
                           Logout
                       </a>
 

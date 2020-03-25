@@ -3,8 +3,11 @@
 use Illuminate\Support\Facades\Route;
 
 
+
+Route::get('/logout', 'SignInController@logout')->name('logout');
 Route::get('/signin', 'SignInController@index')->name('signin.index');
 Route::post('/signin', 'SignInController@signIn')->name('sigin');
+
 
 // USer Routes
 
