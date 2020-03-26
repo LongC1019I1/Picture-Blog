@@ -4,12 +4,12 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
+
                 <img src="{{\Illuminate\Support\Facades\Auth::user()->avatar}}" class="img-circle" alt="User Image">
             </div>
             @auth
                 <div class="pull-left info">
                     <span class="username">{{\Illuminate\Support\Facades\Auth::user()->name}}</span>
-                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             @endauth
         </div>
@@ -39,8 +39,8 @@
                     <span class="menu-arrow arrow_carrot-right"></span>
                 </a>
                 <ul class="sub">
-{{--                    <li><a class="" href="{{asset('admin.user.index')}}">List</a></li>--}}
-                    <li><a class="" href="{{route('admin.User.create')}}">Create</a></li>
+                    <li><a class="" href="{{route('admin.User.index')}}">List</a></li></ul>>
+                  <ul>  <li><a class="" href="{{route('admin.User.create')}}">Create</a></li>
                 </ul>
             </li>
         </ul>

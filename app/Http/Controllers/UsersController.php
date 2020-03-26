@@ -17,6 +17,7 @@ class UsersController extends Controller
 
     public function index()
     {
+
 //        if (!Gate::allows("crud-user")){
 //            abort(403);
 //        }
@@ -55,6 +56,18 @@ class UsersController extends Controller
         ]);
     }
 
+
+    public function delete($id)
+    {
+        if ($this->userService->delete($id)) {
+            $notification = $this->getToarstrNoti('success', 'delete');
+        } else {
+            $notification = $this->getToarstrNoti('error', 'delete');
+        }
+
+        return back()->with($notification);
+    }
+
     public function showUserAll( User $user){
 
 
@@ -81,6 +94,7 @@ class UsersController extends Controller
         return view('userlist.welcome', compact('posts'));
 
     }
+
 
 
 }

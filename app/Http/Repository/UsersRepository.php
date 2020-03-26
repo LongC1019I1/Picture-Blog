@@ -30,9 +30,14 @@ class UsersRepository implements UsersRepositoryInterface
         return $this->user->all();
     }
 
-    public function delete($obj)
+    public function getById($id)
     {
-        // TODO: Implement delete() method.
+        return $this->user->findOrFail($id);
+    }
+
+    public function delete($user)
+    {
+        $user->delete();
     }
 
     public function update($obj)

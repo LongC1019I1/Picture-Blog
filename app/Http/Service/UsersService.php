@@ -30,10 +30,26 @@ class UsersService implements UsersServiceInterface
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->avatar = $request->avatar;
+        //lay doi tuong file tu input "image"
+        $file = $request->file('avatar');
+        //luu ten khac cho anh can luu
+        $fileName = $user->name.'.'.$file->getClientOriginalExtension();
+        //luu anh vao duong dan storage/pulic/images -- luon luon luu vao storage nen ko can phai ghi.
+        // cau truc public/path --path la duong dan de luu.
+        $file->storeAs('public/images', $fileName);
+        $user->avatar = $fileName;
+
         $user->role = $request->role;
 
+
+
+
         $this->userRepo->store($user);
+    }
+
+    public function getById($id)
+    {
+        return $this->userRepo->getById($id);
     }
 
     public function edit($request, $id)
@@ -43,6 +59,6 @@ class UsersService implements UsersServiceInterface
 
     public function delete($id)
     {
-        // TODO: Implement delete() method.
-    }
+        $user = $this->userRepo->getById($id);
+        $this->userRepo->delete($user);    }
 }
