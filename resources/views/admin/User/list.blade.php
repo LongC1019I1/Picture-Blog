@@ -60,6 +60,21 @@
                                         <td>{{ $user->created_at }}</td>
                                         <td><img src="{{asset("storage/images/".$user->avatar)}}" alt="No image"
                                                  style="height: 100px"></td>
+                                        <td>
+                                            <form id="delete-form-{{ $user->id }}" method="get" action="{{ route('admin.User.delete',$user->id) }}" style="display: none">
+                                                {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
+                                            </form>
+                                            <a href="" onclick="
+                                                if(confirm('Are you sure, You Want to delete this?'))
+                                                {
+                                                event.preventDefault();
+                                                document.getElementById('delete-form-{{ $user->id }}').submit();
+                                                }
+                                                else{
+                                                event.preventDefault();
+                                                }" ><span class="glyphicon glyphicon-trash"></span></a>
+                                        </td>
                                         {{--                                        <td><a href="{{ route('post.edit',$post->id) }}"><span class="glyphicon glyphicon-edit"></span></a></td>--}}
 {{--                                        <td>--}}
 {{--                                            <form id="delete-form-{{ $post->id }}" method="post" action="{{ route('post.destroy',$post->id) }}" style="display: none">--}}

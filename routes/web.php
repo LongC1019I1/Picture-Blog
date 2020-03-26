@@ -15,7 +15,7 @@ Route::prefix('user')->group(function () {
     Route::post('/store', 'UsersController@store')->name('admin.user.store');
 //    Route::get('/{id}/edit', 'UserController@showFormEdit')->name('admin_html.user.edit');
 //    Route::post('/{id}/update', 'UserController@update')->name('admin_html.user.update');
-//    Route::get('/{id}/delete', 'UserController@delete')->name('admin_html.user.delete');
+    Route::get('/{id}/delete', 'UsersController@delete')->name('admin.User.delete');
 //    Route::get('/search', 'UserController@search')->name('admin_html.user.search');
 });
 

@@ -17,19 +17,19 @@
         <ul class="nav navbar-nav">
 
           <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu">
+          <div class="dropdown user user-menu" style="margin-top: 15px">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="{{asset('storage/images/'.Auth::user()->avatar)}}" class="user-image" alt="User Image">
               <span class="hidden-xs"></span>
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu" style="margin-top: 45px; margin-left: -250px">
               <!-- User image -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="{{asset('storage/images/'.Auth::user()->avatar)}}" class="img-circle" alt="User Image">
 
                 <p>
                    - Web Developer
-                  <small>Member since </small>
+                  <small>{{\Illuminate\Support\Facades\Auth::user()->name}} </small>
                 </p>
               </li>
               <!-- Menu Footer-->
@@ -48,7 +48,7 @@
                 </div>
               </li>
             </ul>
-          </li>
+          </div>
         </ul>
       </div>
     </nav>
