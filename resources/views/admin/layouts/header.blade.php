@@ -25,7 +25,9 @@
             <ul class="dropdown-menu" style="margin-top: 45px; margin-left: -250px">
               <!-- User image -->
               <li class="user-header">
-                <img src="{{asset('storage/images/'.\Illuminate\Support\Facades\Auth::user()->avatar)}}" class="img-circle" alt="User Image">
+
+                <img src="{{asset('storage/images/'.Auth::user()->avatar)}}" class="img-circle" alt="User Image">
+
 
                 <p>
                    - Web Developer

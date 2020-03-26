@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contract\user\UsersServiceInterface;
+use App\Model\user\User;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -55,6 +56,7 @@ class UsersController extends Controller
         ]);
     }
 
+
     public function delete($id)
     {
         if ($this->userService->delete($id)) {
@@ -65,4 +67,34 @@ class UsersController extends Controller
 
         return back()->with($notification);
     }
+
+    public function showUserAll( User $user){
+
+
+        $posts = $user::findOrFail(\Illuminate\Support\Facades\Auth::user()->id)->posts()->get();
+
+        return view('userlist.welcome', compact('posts'));
+
+    }
+
+    public function showUserPrivate( User $user){
+
+
+        $posts = $user::findOrFail(\Illuminate\Support\Facades\Auth::user()->id)->posts()->where('status',NULL)->get();
+
+        return view('userlist.welcome', compact('posts'));
+
+    }
+
+    public function showUserPublic( User $user){
+
+
+        $posts = $user::findOrFail(\Illuminate\Support\Facades\Auth::user()->id)->posts()->where('status',1)->get();
+
+        return view('userlist.welcome', compact('posts'));
+
+    }
+
+
+
 }
