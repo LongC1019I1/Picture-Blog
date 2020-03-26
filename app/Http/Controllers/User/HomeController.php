@@ -7,12 +7,14 @@ use App\Model\user\category;
 use App\Model\user\category_post;
 use App\Model\user\post;
 use App\Model\user\tag;
+use App\Model\user\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    public function index(category $category){
+    public function index(User $user){
+//        $user = Auth::user();
         $posts = post::where('status',1)->orderBy('created_at','DESC')->paginate(6);
 //        $postCate = $category->posts();
 
@@ -28,7 +30,9 @@ class HomeController extends Controller
             ->where('categories.slug', '=', 'chinh-tri')
             ->first();
 
-
+//        dd($user::findOrFail(1)->posts()->get());
+//      $postUser = $user->posts()->get();
+//        dd($postUser);
 
         return view('user.blog', compact('posts','postLichsu','postChinhtri'));
     }
@@ -44,6 +48,12 @@ class HomeController extends Controller
 
         $posts= $category->posts();
         return view('user.category', compact('posts'));
+
+    }
+
+    public function user(User $user){
+
+
 
     }
 }

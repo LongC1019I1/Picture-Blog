@@ -17,6 +17,10 @@ Route::prefix('user')->group(function () {
 //    Route::post('/{id}/update', 'UserController@update')->name('admin_html.user.update');
     Route::get('/{id}/delete', 'UsersController@delete')->name('admin.User.delete');
 //    Route::get('/search', 'UserController@search')->name('admin_html.user.search');
+    Route::get('post/show', 'UsersController@showUserAll')->name('PostAll');
+
+    Route::get('/post/private', 'UsersController@showUserPrivate')->name('PostPrivate');
+    Route::get('/post/public', 'UsersController@showUserPublic')->name('PostPublic');
 });
 
 // USer Routes

@@ -134,7 +134,7 @@
                                 <span class="post-category text-white bg-primary">Sports</span>
                                 <div class="text text-sm">
                                     <h2>{{$post->title}}</h2>
-                                    <span>{{$post->created_at->diffForHumans()}}</span>
+                                    <span>{{$post->created_at}}</span>
                                 </div>
                             </a>
                             <a href="{{route('post',$post->slug)}}" class="hentry v-height img-2 ml-auto gradient" style="background-image: url('{{Storage::disk('local')->url($post->image)}}');">
@@ -142,7 +142,7 @@
                                 <span class="post-category text-white bg-warning">Lifestyle</span>
                                 <div class="text text-sm">
                                     <h2>{{$post->title}}</h2>
-                                    <span>{{$post->created_at->diffForHumans()}}</span>
+                                    <span>{{$post->created_at}}</span>
                                 </div>
                             </a>
                         </div>
