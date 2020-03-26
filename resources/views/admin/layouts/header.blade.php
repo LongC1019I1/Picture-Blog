@@ -19,7 +19,7 @@
           <!-- User Account: style can be found in dropdown.less -->
           <div class="dropdown user user-menu" style="margin-top: 15px">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{asset('storage/images/'.Auth::user()->avatar)}}" class="user-image" alt="User Image">
+              <img src="{{asset('storage/images/'.\Illuminate\Support\Facades\Auth::user()->avatar)}}" class="user-image" alt="User Image">
               <span class="hidden-xs"></span>
             </a>
             <ul class="dropdown-menu" style="margin-top: 45px; margin-left: -250px">
