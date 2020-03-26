@@ -16,6 +16,7 @@ class UsersController extends Controller
 
     public function index()
     {
+
 //        if (!Gate::allows("crud-user")){
 //            abort(403);
 //        }

@@ -39,8 +39,8 @@
                     <span class="menu-arrow arrow_carrot-right"></span>
                 </a>
                 <ul class="sub">
-{{--                    <li><a class="" href="{{asset('admin.user.index')}}">List</a></li>--}}
-                    <li><a class="" href="{{route('admin.User.create')}}">Create</a></li>
+                    <li><a class="" href="{{route('admin.User.index')}}">List</a></li></ul>>
+                  <ul>  <li><a class="" href="{{route('admin.User.create')}}">Create</a></li>
                 </ul>
             </li>
         </ul>

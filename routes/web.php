@@ -10,7 +10,7 @@ Route::post('/signin', 'SignInController@signIn')->name('sigin');
 
 
 Route::prefix('user')->group(function () {
-//    Route::get('/', 'UserController@index')->name('admin.user.index');
+    Route::get('/list', 'UsersController@index')->name('admin.User.index');
     Route::get('/create', 'UsersController@showFormCreate')->name('admin.User.create');
     Route::post('/store', 'UsersController@store')->name('admin.user.store');
 //    Route::get('/{id}/edit', 'UserController@showFormEdit')->name('admin_html.user.edit');
