@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    public function index(){
+    public function index(User $user){
 //        $user = Auth::user();
         $posts = post::where('status',1)->orderBy('created_at','DESC')->paginate(6);
 //        $postCate = $category->posts();
@@ -30,8 +30,8 @@ class HomeController extends Controller
             ->where('categories.slug', '=', 'chinh-tri')
             ->first();
 
-//        dd($user::findOrFail(1)->posts()->get());
-//        $postUser = $user->posts()->get();
+        dd($user::findOrFail(1)->posts()->get());
+//      $postUser = $user->posts()->get();
 //        dd($postUser);
 
         return view('user.blog', compact('posts','postLichsu','postChinhtri'));
