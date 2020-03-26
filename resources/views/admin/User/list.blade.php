@@ -45,9 +45,9 @@
                                     <th>S.No</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Password</th>
                                     <th>Create at</th>
                                     <th>Avatar</th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -56,7 +56,6 @@
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
-                                        <td>{{ $user->password }}</td>
                                         <td>{{ $user->created_at }}</td>
                                         <td><img src="{{asset("storage/images/".$user->avatar)}}" alt="No image"
                                                  style="height: 100px"></td>
