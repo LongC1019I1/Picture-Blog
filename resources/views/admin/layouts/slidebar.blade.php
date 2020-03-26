@@ -5,7 +5,7 @@
         <div class="user-panel">
             <div class="pull-left image">
 
-                <img src="{{\Illuminate\Support\Facades\Auth::user()->avatar}}" class="img-circle" alt="User Image">
+                <img src="{{asset('storage/images/'.Auth::user()->avatar)}}" class="img-circle" alt="User Image">
             </div>
             @auth
                 <div class="pull-left info">
