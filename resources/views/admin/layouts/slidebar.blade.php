@@ -30,11 +30,17 @@
                     <li class=""><a href="{{route('post.index')}}"><i class="fa fa-circle-o"></i> Posts </a></li>
                     <li class=""><a href="{{route('category.index')}}"><i class="fa fa-circle-o"></i> Categories </a></li>
                     <li class=""><a href="{{route('tag.index')}}"><i class="fa fa-circle-o"></i> Tags </a></li>
-                    <li class=""><a href="{{route('user.index')}}"><i class="fa fa-circle-o"></i> Users </a></li>
-
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="fa fa-user"></i>
+                    <span>User</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+{{--                    <li><a class="" href="{{asset('admin.user.index')}}">List</a></li>--}}
+                    <li><a class="" href="{{route('admin.User.create')}}">Create</a></li>
+                </ul>
             </li>
-
-
         </ul>
     </section>
     <!-- /.sidebar -->
