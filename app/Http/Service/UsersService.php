@@ -47,6 +47,11 @@ class UsersService implements UsersServiceInterface
         $this->userRepo->store($user);
     }
 
+    public function getById($id)
+    {
+        return $this->userRepo->getById($id);
+    }
+
     public function edit($request, $id)
     {
         // TODO: Implement edit() method.
@@ -54,6 +59,6 @@ class UsersService implements UsersServiceInterface
 
     public function delete($id)
     {
-        // TODO: Implement delete() method.
-    }
+        $user = $this->userRepo->getById($id);
+        $this->userRepo->delete($user);    }
 }

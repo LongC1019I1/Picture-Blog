@@ -54,4 +54,15 @@ class UsersController extends Controller
             'alert-type' => "$typeAlert"
         ]);
     }
+
+    public function delete($id)
+    {
+        if ($this->userService->delete($id)) {
+            $notification = $this->getToarstrNoti('success', 'delete');
+        } else {
+            $notification = $this->getToarstrNoti('error', 'delete');
+        }
+
+        return back()->with($notification);
+    }
 }
