@@ -30,7 +30,7 @@ class HomeController extends Controller
             ->where('categories.slug', '=', 'chinh-tri')
             ->first();
 
-        dd($user::findOrFail(1)->posts()->get());
+//        dd($user::findOrFail(1)->posts()->get());
 //      $postUser = $user->posts()->get();
 //        dd($postUser);
 
