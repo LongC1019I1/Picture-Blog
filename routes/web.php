@@ -26,7 +26,7 @@ Route::prefix('user')->group(function () {
 // USer Routes
 
 Route::group(['namespace' => 'User'], function () {
-    Route::get('/', 'HomeController@index');
+    Route::get('/', 'HomeController@index')->name('index');
 
     Route::get('post/{post}', 'PostController@post')->name('post');
     Route::get('post/tag/{tag}', 'HomeController@tag')->name('tag');
