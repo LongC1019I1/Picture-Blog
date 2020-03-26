@@ -22,7 +22,7 @@
                     <!-- general form elements -->
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form role="form" method="post" action="{{route('admin.user.store')}}" >
+                        <form role="form" method="post" action="{{route('admin.user.store')}}" enctype="multipart/form-data" >
                             @csrf
                             <div class="box-body">
 
@@ -44,7 +44,7 @@
 
                                     <div class="form-group">
                                         <label for="slug">Avatar</label>
-                                        <input type="text" class="form-control" id="slug" name="avatar" placeholder="">
+                                        <input type="file" class="form-control" id="" name="avatar" placeholder="">
                                     </div>
 
                                     <div class="form-group">
