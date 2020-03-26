@@ -3,10 +3,12 @@
 use Illuminate\Support\Facades\Route;
 
 
-
 Route::get('/logout', 'SignInController@logout')->name('logout');
 Route::get('/signin', 'SignInController@index')->name('signin.index');
 Route::post('/signin', 'SignInController@signIn')->name('sigin');
+
+Route::get('/register', "RegisterController@show")->name("register.show");
+Route::post('/register', "RegisterController@register")->name("register");
 
 
 Route::prefix('user')->group(function () {
@@ -31,20 +33,24 @@ Route::group(['namespace' => 'User'], function () {
 });
 
 //Route::post('admin/post', 'PostController@store')->name('post.store');
-Route::group(['namespace' => 'Admin'], function () {
 
-    Route::get('admin/home', 'AdminController@index')->name('admin.home');
-    //User Routes
-    Route::resource('admin/user', 'UserController');
+Route::middleware('checkLogin')->group(function () {
 
-    //Post Routes
-    Route::resource('admin/post', 'PostController');
-    //Tag Routes
-    Route::resource('admin/tag', 'TagController');
-    //Category Routes
-    Route::resource('admin/category', 'CategoryController');
+
+    Route::group(['namespace' => 'Admin'], function () {
+
+        Route::get('admin/home', 'AdminController@index')->name('admin.home');
+        //User Routes
+        Route::resource('admin/user', 'UserController');
+
+        //Post Routes
+        Route::resource('admin/post', 'PostController');
+        //Tag Routes
+        Route::resource('admin/tag', 'TagController');
+        //Category Routes
+        Route::resource('admin/category', 'CategoryController');
+    });
 });
-
 
 
 //Route::get('/', function () {

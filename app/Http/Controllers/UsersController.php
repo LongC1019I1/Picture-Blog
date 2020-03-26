@@ -37,8 +37,8 @@ class UsersController extends Controller
         } else {
             $notification = $this->getToarstrNoti('error', 'create');
         }
-
-        return back()->with($notification);
+        return redirect()->route('signin.index');
+//        return back()->with($notification);
     }
 
     public function getToarstrNoti($typeAlert, $action)
