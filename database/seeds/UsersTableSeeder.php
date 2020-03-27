@@ -16,6 +16,8 @@ class UsersTableSeeder extends Seeder
         $user->name = "admin";
         $user->email = 'admin@gmail.com';
         $user->password = \Illuminate\Support\Facades\Hash::make('admin123');
+        $user->avatar = 'sdfsadf';
+        $user->role = 1;
         $user->save();
     }
 }

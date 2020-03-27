@@ -7,13 +7,14 @@ use App\Model\user\category;
 use App\Model\user\post;
 use App\Model\user\tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
 
     public function index()
     {
-        $posts = post::all();
+        $posts = post::all()->where('user_id',Auth::user()->id);
         return view('admin.post.show', compact('posts'));
     }
 
@@ -28,6 +29,7 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+
 
         $this->validate($request, [
             'title' => 'required',
@@ -49,6 +51,7 @@ class PostController extends Controller
         $post->slug =$request->slug;
         $post->body = $request->body;
         $post->status = $request->status;
+        $post->user_id = Auth::user()->id;
         $post->save();
         $post->tags()->sync($request->tags);
         $post->categories()->sync($request->categories);
