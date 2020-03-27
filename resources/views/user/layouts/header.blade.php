@@ -14,8 +14,6 @@
 {{--</header>--}}
 
 
-
-
     <div class="site-mobile-menu">
         <div class="site-mobile-menu-header">
             <div class="site-mobile-menu-close mt-3">
@@ -37,18 +35,18 @@
                 </div>
 
                 <div class="col-4 site-logo">
-                    <a href="index.html" class="text-black h2 mb-0">Mini Blog</a>
+                    <a href="http://127.0.0.1:8000" class="text-black h2 mb-0"><h1>Mini Blog</h1></a>
                 </div>
 
                 <div class="col-8 text-right">
                     <nav class="site-navigation" role="navigation">
                         <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
-                            <li><a href="category.html">Home</a></li>
-                            <li><a href="category.html">Politics</a></li>
-                            <li><a href="category.html">Tech</a></li>
-                            <li><a href="category.html">Entertainment</a></li>
-                            <li><a href="category.html">Travel</a></li>
-                            <li><a href="category.html">Sports</a></li>
+                            <li><a href="http://127.0.0.1:8000">Home</a></li>
+                            <li><a href="http://127.0.0.1:8000/post/category/chinh-tri">Politics</a></li>
+                            <li><a href="http://127.0.0.1:8000/post/category/tin-tuc">News</a></li>
+                            <li><a href="http://127.0.0.1:8000/post/category/giai-tri">Entertainment</a></li>
+                            <li><a href="http://127.0.0.1:8000/post/category/show-biz">Showbiz </a></li>
+                            <li><a href="http://127.0.0.1:8000/post/category/suc-khoe">Health</a></li>
                             <li class="d-none d-lg-inline-block"><a href="#" class="js-search-toggle"><span class="icon-search"></span></a></li>
                         </ul>
                     </nav>

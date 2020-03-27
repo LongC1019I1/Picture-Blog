@@ -105,7 +105,8 @@
         @foreach($posts as $post)
             <a href="{{route('post',$post->slug)}}">
                 <div class="w3-third w3-container w3-margin-bottom">
-                    <img src="{{Storage::disk('local')->url($post->image)}}" alt="Norway" style="width:100%; height: 200px"
+                    <img src="{{Storage::disk('local')->url($post->image)}}" alt="Norway"
+                         style="width:100%; height: 200px"
                          class="w3-hover-opacity">
                     <div class="w3-container w3-white">
                         <p><b>  {{$post->title}}</b></p>
@@ -114,7 +115,6 @@
                 </div>
             </a>
         @endforeach
-
     </div>
 
 
@@ -122,8 +122,8 @@
 
     <div class="w3-center w3-padding-32">
         <ul>
-            <li  href="#"
-                 class="w3-bar-item w3-button w3-hover-black">{{ $posts->links() }}</li>
+            <li href="#"
+                class="w3-bar-item w3-button w3-hover-black">{{ $posts->links() }}</li>
         </ul>
     </div>
 </div>
@@ -142,7 +142,3 @@
 </script>
 </body>
 </html>
-
-
-
-p

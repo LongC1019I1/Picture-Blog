@@ -1,13 +1,9 @@
 @extends('user.app')
 
 
-{{--@section('bg-img',Storage::disk('local')->url($post->image));--}}
 @section('headSection')
     <link rel="stylesheet" href="{{asset(('user/css/prism.css'))}}">
 @endsection
-{{--@section('title', $post->title);--}}
-{{--@section('sub-heading',$post->subtitle);--}}
-
 @section('main-content')
 
 
@@ -29,7 +25,8 @@
                 @foreach($posts as $post)
                     <div class="col-lg-4 mb-4">
                         <div class="entry2">
-                            <a href="{{route('post',$post->slug)}}"><img src="{{Storage::disk('local')->url($post->image)}}" alt="Image" class="img-fluid rounded"></a>
+                            <a href="{{route('post',$post->slug)}}">
+                                <img style="height: 350px" src="{{Storage::disk('local')->url($post->image)}}" alt="Image" class="img-fluid rounded"></a>
                             <div class="excerpt">
                                 <span class="post-category text-white bg-secondary mb-3">Politics</span>
 

@@ -4,17 +4,14 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Model\user\category;
-use App\Model\user\category_post;
 use App\Model\user\post;
 use App\Model\user\tag;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    public function index(category $category){
+    public function index() {
         $posts = post::where('status',1)->orderBy('created_at','DESC')->paginate(6);
-//        $postCate = $category->posts();
 
         $postLichsu= DB::table('category_posts')
             ->join('categories', 'category_posts.category_id', '=', 'categories.id')
@@ -28,9 +25,13 @@ class HomeController extends Controller
             ->where('categories.slug', '=', 'chinh-tri')
             ->first();
 
+        $postShowbiz= DB::table('category_posts')
+            ->join('categories', 'category_posts.category_id', '=', 'categories.id')
+            ->join('posts', 'category_posts.post_id', '=', 'posts.id')
+            ->where('categories.slug', '=', 'show-biz')
+            ->first();
 
-
-        return view('user.blog', compact('posts','postLichsu','postChinhtri'));
+        return view('user.blog', compact('posts','postLichsu','postChinhtri','postShowbiz'));
     }
 
     public function tag(tag $tag){

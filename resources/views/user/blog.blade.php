@@ -1,8 +1,8 @@
 @extends('user.app')
 
-@section('bg-img',asset('user/img/home-bg.jpg'));
-@section('title','Long Blog');
-@section('sub-heading','Learn and Grow');
+@section('bg-img',asset('user/img/home-bg.jpg'))
+@section('title','Long Blog')
+@section('sub-heading','Learn and Grow')
 
 @section('main-content')
 
@@ -27,19 +27,22 @@
                             </div>
                         </a>
                     </div>
+
                     <div class="col-md-4">
-                        <a href="http://127.0.0.1:8000/post/the-gioi-thay-doi-tung-giay" class="h-entry img-5 h-100 gradient" style="background-image: url({{asset('blog/images/img_v_1.jpg')}})">
+
+                        <a href="{{route('post',$postShowbiz->slug)}}" class="h-entry img-5 h-100 gradient" style="background-image: url('{{Storage::disk('local')->url($postShowbiz->image)}}}}');">
 
                             <div class="text">
                                 <div class="post-categories mb-3">
-                                    <span class="post-category bg-danger">Travel</span>
-                                    <span class="post-category bg-primary">Food</span>
+                                    <span class="post-category bg-danger">{{$postShowbiz->name}}</span>
                                 </div>
-                                <h2>LUẬN Thế giới thay đổi từng giây, chỉ có sức mạnh "đổi trắng thay đen" của photoshop là bất biến</h2>
-                                <span class="date">July 19, 2019</span>
+                                <h2>{{$postShowbiz->title}}</h2>
+                                <span class="date">{{$postShowbiz->created_at}}</span>
                             </div>
                         </a>
+
                     </div>
+
                     <div class="col-md-4">
                         <a href="single.html" class="h-entry mb-30 v-height gradient" style="background-image: url({{asset('blog/images/hero_1.jpg')}})">
 
@@ -69,15 +72,18 @@
                 </div>
                 <div class="row">
                     @foreach($posts as $post)
+
                     <div class="col-lg-4 mb-4">
                         <div class="entry2">
-                            <a href="{{route('post',$post->slug)}}"><img src="{{Storage::disk('local')->url($post->image)}}" alt="Image" class="img-fluid rounded"></a>
+                            <a href="{{route('post',$post->slug)}}">
+                                <img style="width: 700px; height: 350px" src="{{Storage::disk('local')->url($post->image)}}" alt="Image" class="img-fluid rounded"></a>
                             <div class="excerpt">
                                 <span class="post-category text-white bg-secondary mb-3">Politics</span>
 
                                 <h2><a href="{{route('post',$post->slug)}}">{{$post->title}}</a></h2>
                                 <div class="post-meta align-items-center text-left clearfix">
-                                    <figure class="author-figure mb-0 mr-3 float-left"><img src="{{asset('blog/images/person_1.jpg')}}" alt="Image" class="img-fluid"></figure>
+                                    <figure class="author-figure mb-0 mr-3 float-left">
+                                        <img src="{{asset('blog/images/person_1.jpg')}}" alt="Image" class="img-fluid"></figure>
 {{--                                    <span class="d-inline-block mt-1">By <a href="#">{{$post->subtitle}}</a></span>--}}
                                     <span>&nbsp;-&nbsp; July 19, 2019</span>
                                 </div>
