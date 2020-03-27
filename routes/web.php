@@ -38,7 +38,7 @@ Route::group(['namespace' => 'User'], function () {
 
 //Route::post('admin/post', 'PostController@store')->name('post.store');
 
-Route::middleware('checkLogin')->group(function () {
+Route::middleware(['checkLogin', 'checkAdmin'])->group(function () {
 
 
     Route::group(['namespace' => 'Admin'], function () {
