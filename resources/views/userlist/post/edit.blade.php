@@ -29,37 +29,41 @@
                     @include('includes.messages')
                     <!-- /.box-header -->
                         <!-- form start -->
-{{--                        <form role="form" action="{{ route('post.update',$post->id) }}" method="post"--}}
+                        <form role="form" action="{{route('post.update',$post->id)}}" method="post"
                               enctype="multipart/form-data">
                             {{ csrf_field() }}
+                            {{ method_field('PATCH') }}
                             <div class="box-body">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="title">Post Title</label>
-                                        <input type="text" class="form-control" id="title" name="title"
+                                        <input type="text" class="form-control" id="title" name="title" value="{{$post->title}}"
                                                placeholder="Title">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="subtitle">Post Sub Title</label>
-                                        <input type="text" class="form-control" id="subtitle" name="subtitle"
+                                        <input type="text" class="form-control" id="subtitle" name="subtitle" value="{{$post->subtitle}}"
                                                placeholder="Sub Title">
                                     </div>
 
-                                    <div class="form-group">
-                                        <label for="slug">Post Slug</label>
-                                        <input type="text" class="form-control" id="slug" name="slug"
-                                               placeholder="Slug">
-                                    </div>
+{{--                                    <div class="form-group">--}}
+{{--                                        <label for="slug">Post Slug</label>--}}
+{{--                                        <input type="text" class="form-control" id="slug" name="slug"--}}
+{{--                                               placeholder="Slug">--}}
+{{--                                    </div>--}}
 
                                 </div>
                                 <div class="col-lg-6">
                                     <br>
                                     <div class="form-group">
                                         <div class="pull-right">
+                                            <img src="{{Storage::disk('local')->url($post->image)}}"
+                                                 style="width: 100px"/>
+                                            <br>
+                                            <br>
                                             <label for="image">File input</label>
-                                            img src="{{Storage::disk('local')->url($post->image)}}"
-                                            style="width: 100px">
+
                                             <input type="file" name="image" id="image">
                                         </div>
                                         <div class="checkbox pull-left">
@@ -73,14 +77,7 @@
                                         </div>
                                     </div>
                                     <br>
-                                    <div class="form-group" style="margin-top:18px;">
-                                        <label>Select Tags</label>
-                                        {{--                                        <select class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select a State" style="width: 100%;" tabindex="-1" aria-hidden="true" name="tags[]">--}}
-                                        {{--                                            @foreach ($tags as $tag)--}}
-                                        {{--                                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>--}}
-                                        {{--                                            @endforeach--}}
-                                        {{--                                        </select>--}}
-                                    </div>
+
                                     <div class="form-group" style="margin-top:18px;">
                                         <label>Select Category</label>
 
@@ -129,6 +126,15 @@
 
                                         {{$post->body}}
                                     </textarea>
+                                </div>
+
+                                <div class="form-group" style="margin-top:18px;">
+                                    <label>Select Tags</label>
+                                    {{--                                        <select class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select a State" style="width: 100%;" tabindex="-1" aria-hidden="true" name="tags[]">--}}
+                                    {{--                                            @foreach ($tags as $tag)--}}
+                                    {{--                                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>--}}
+                                    {{--                                            @endforeach--}}
+                                    {{--                                        </select>--}}
                                 </div>
                                 {{--                                <div class="box-body pad">--}}
                                 {{--                                    <textarea name="body" style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" id="editor1"></textarea>--}}

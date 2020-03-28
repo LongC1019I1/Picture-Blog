@@ -5,7 +5,7 @@
             <i class="fa fa-remove"></i>
         </a>
         <img src="{{asset('storage/images/'.Auth::user()->avatar)}}" style="width:45%;" class="w3-round"><br><br>
-        <h4><b>PORTFOLIO</b></h4>
+        <h4><b>{{\Illuminate\Support\Facades\Auth::user()->name}}</b></h4>
         <p class="w3-text-grey">Template by W3.CSS</p>
     </div>
     <div class="w3-bar-block">

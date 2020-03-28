@@ -109,9 +109,10 @@ class UsersController extends Controller
     public function PostEdit($id){
 
         $post = post::with('tags','categories')->where('id',$id)->first();
+
         $tags = tag::all();
         $categories = category::all();
-        return view('userlist.post.edit',compact('tags','categories'));
+        return view('userlist.post.edit',compact('tags','categories','post'));
 
     }
 

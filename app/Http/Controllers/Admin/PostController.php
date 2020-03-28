@@ -80,7 +80,7 @@ class PostController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'subtitle' => 'required',
-            'slug' => 'required',
+//            'slug' => 'required',
             'body' => 'required',
         ]);
 
