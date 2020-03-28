@@ -54,6 +54,7 @@ Route::middleware(['checkLogin', 'checkAdmin'])->group(function () {
         //Category Routes
         Route::resource('admin/category', 'CategoryController');
     });
+    //a
 });
 
 
