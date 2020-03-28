@@ -10,3 +10,5 @@
         document.getElementById("myOverlay").style.display = "none";
     }
 </script>
+@section('footerSection')
+    @show

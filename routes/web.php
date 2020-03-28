@@ -23,6 +23,10 @@ Route::prefix('user')->group(function () {
 
     Route::get('/post/private', 'UsersController@showUserPrivate')->name('PostPrivate');
     Route::get('/post/public', 'UsersController@showUserPublic')->name('PostPublic');
+    Route::get('/post/create', 'UsersController@PostCreate')->name('UserPost');
+
+
+
 });
 
 // USer Routes
@@ -58,6 +62,24 @@ Route::middleware(['checkLogin', 'checkAdmin'])->group(function () {
 });
 
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::middleware('checkLogin')->group(function () {
+
+
+//    Route::group(['namespace' => 'Admin'], function () {
+//
+//        Route::get('admin/home', 'AdminController@index')->name('admin.home');
+//        //User Routes
+//        Route::resource('admin/user', 'UserController');
+//
+//        //Post Routes
+//        Route::resource('admin/post', 'PostController');
+//        //Tag Routes
+//        Route::resource('admin/tag', 'TagController');
+//        //Category Routes
+//        Route::resource('admin/category', 'CategoryController');
+//    });
+
+
+});
+
+
