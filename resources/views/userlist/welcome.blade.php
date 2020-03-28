@@ -25,8 +25,8 @@
 
             <div class="w3-third w3-container w3-margin-bottom">
                 <a href="{{route('post',$post->slug)}}">
-                    <img src="{{Storage::disk('local')->url($post->image)}}" alt="Norway"
-                         style="width:100%; height: 200px"
+                    <img  src="{{Storage::disk('local')->url($post->image)}}" alt="Norway"
+                         style="width:100%; height: 250px"
                          class="w3-hover-opacity">
                     <div class="w3-container w3-white">
                         <p><b>  {{$post->title}}</b></p>
