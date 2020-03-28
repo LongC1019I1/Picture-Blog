@@ -24,6 +24,7 @@ Route::prefix('user')->group(function () {
     Route::get('/post/private', 'UsersController@showUserPrivate')->name('PostPrivate');
     Route::get('/post/public', 'UsersController@showUserPublic')->name('PostPublic');
     Route::get('/post/create', 'UsersController@PostCreate')->name('UserPost');
+    Route::get('/post/{id}/edit', 'UsersController@PostEdit')->name('PostEdit');
 
 
 

@@ -8,6 +8,7 @@ use App\Model\user\post;
 use App\Model\user\tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -96,7 +97,7 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->image = $image;
         $post->subtitle = $request->subtitle;
-        $post->slug =$request->slug;
+        $post->slug =Str::slug($request->title);
         $post->body = $request->body;
         $post->status = $request->status;
         $post->tags()->sync($request->tags);
@@ -104,7 +105,7 @@ class PostController extends Controller
         $post->save();
 
 
-        return redirect(route('post.index'));
+        return redirect(route('PostAll'));
 
     }
 

@@ -16,8 +16,7 @@
 @section('main-content')
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper" style="box-sizing:border-box; padding: 20px " >
-
+    <div class="content-wrapper" style="box-sizing:border-box; padding: 20px ">
 
 
         <!-- Main content -->
@@ -30,23 +29,27 @@
                     @include('includes.messages')
                     <!-- /.box-header -->
                         <!-- form start -->
-                        <form role="form" action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">
+{{--                        <form role="form" action="{{ route('post.update',$post->id) }}" method="post"--}}
+                              enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="box-body">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="title">Post Title</label>
-                                        <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+                                        <input type="text" class="form-control" id="title" name="title"
+                                               placeholder="Title">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="subtitle">Post Sub Title</label>
-                                        <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Sub Title">
+                                        <input type="text" class="form-control" id="subtitle" name="subtitle"
+                                               placeholder="Sub Title">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="slug">Post Slug</label>
-                                        <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug">
+                                        <input type="text" class="form-control" id="slug" name="slug"
+                                               placeholder="Slug">
                                     </div>
 
                                 </div>
@@ -55,40 +58,51 @@
                                     <div class="form-group">
                                         <div class="pull-right">
                                             <label for="image">File input</label>
+                                            img src="{{Storage::disk('local')->url($post->image)}}"
+                                            style="width: 100px">
                                             <input type="file" name="image" id="image">
                                         </div>
                                         <div class="checkbox pull-left">
                                             <label>
-                                                <input type="checkbox" name="status" value="1"> Publish
+                                                <input type="checkbox" name="status" value="1"
+                                                @if ($post->status == 1)
+                                                    {{'checked'}}
+                                                    @endif
+                                                > Publish
                                             </label>
                                         </div>
                                     </div>
                                     <br>
                                     <div class="form-group" style="margin-top:18px;">
                                         <label>Select Tags</label>
-{{--                                        <select class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select a State" style="width: 100%;" tabindex="-1" aria-hidden="true" name="tags[]">--}}
-{{--                                            @foreach ($tags as $tag)--}}
-{{--                                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>--}}
-{{--                                            @endforeach--}}
-{{--                                        </select>--}}
+                                        {{--                                        <select class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select a State" style="width: 100%;" tabindex="-1" aria-hidden="true" name="tags[]">--}}
+                                        {{--                                            @foreach ($tags as $tag)--}}
+                                        {{--                                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>--}}
+                                        {{--                                            @endforeach--}}
+                                        {{--                                        </select>--}}
                                     </div>
                                     <div class="form-group" style="margin-top:18px;">
                                         <label>Select Category</label>
 
-                                        <select id='testSelect1' name="categories[]" multiple >
+                                        <select id='testSelect1' name="categories[]" multiple>
                                             @foreach ($categories as $category)
-                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+
+                                                <option value="{{ $category->id }}"
+                                                        @foreach ($post->categories as $postCategory)
+                                                        @if ($postCategory->id == $category->id)
+                                                        selected
+                                                    @endif
+                                                    @endforeach
+                                                >{{ $category->name }}</option>
                                             @endforeach
                                         </select>
 
-                                        <script>
-                                            document.multiselect('#testSelect1');
-                                        </script>
-{{--                                        <select class="form-control select2 select2-hidden-accessible" data-placeholder="Select a State" style="width: 100%;" tabindex="-1" aria-hidden="true" name="categories[]">--}}
-{{--                                            @foreach ($categories as $category)--}}
-{{--                                                <option value="{{ $category->id }}">{{ $category->name }}</option>--}}
-{{--                                            @endforeach--}}
-{{--                                        </select>--}}
+
+                                        {{--                                        <select class="form-control select2 select2-hidden-accessible" data-placeholder="Select a State" style="width: 100%;" tabindex="-1" aria-hidden="true" name="categories[]">--}}
+                                        {{--                                            @foreach ($categories as $category)--}}
+                                        {{--                                                <option value="{{ $category->id }}">{{ $category->name }}</option>--}}
+                                        {{--                                            @endforeach--}}
+                                        {{--                                        </select>--}}
                                     </div>
 
                                 </div>
@@ -102,7 +116,8 @@
                                     </h3>
                                     <!-- tools box -->
                                     <div class="pull-right box-tools">
-                                        <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                        <button type="button" class="btn btn-default btn-sm" data-widget="collapse"
+                                                data-toggle="tooltip" title="Collapse">
                                             <i class="fa fa-minus"></i></button>
                                     </div>
                                     <!-- /. tools -->
@@ -110,11 +125,14 @@
                                 <!-- /.box-header -->
                                 <div class="form-group col-md-12">
 
-                                    <textarea name="body" class="form-control " id="editor1"></textarea>
+                                    <textarea name="body" class="form-control " id="editor1">
+
+                                        {{$post->body}}
+                                    </textarea>
                                 </div>
-{{--                                <div class="box-body pad">--}}
-{{--                                    <textarea name="body" style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" id="editor1"></textarea>--}}
-{{--                                </div>--}}
+                                {{--                                <div class="box-body pad">--}}
+                                {{--                                    <textarea name="body" style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" id="editor1"></textarea>--}}
+                                {{--                                </div>--}}
                             </div>
 
                             <div style="margin-left: 12px" class="box-footer">
@@ -140,7 +158,7 @@
     <script src="{{  asset('admin/ckeditor/ckeditor.js') }}"></script>
     <script> CKEDITOR.replace('editor1'); </script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $(".select2").select2();
         });
     </script>

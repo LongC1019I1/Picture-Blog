@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contract\user\UsersServiceInterface;
 use App\Model\user\category;
+use App\Model\user\post;
 use App\Model\user\tag;
 use App\Model\user\User;
 use Illuminate\Http\Request;
@@ -102,6 +103,15 @@ class UsersController extends Controller
         $tags = tag::all();
         $categories = category::all();
         return view('userlist.post.post',compact('tags','categories'));
+
+    }
+
+    public function PostEdit($id){
+
+        $post = post::with('tags','categories')->where('id',$id)->first();
+        $tags = tag::all();
+        $categories = category::all();
+        return view('userlist.post.edit',compact('tags','categories'));
 
     }
 

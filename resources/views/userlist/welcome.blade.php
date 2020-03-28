@@ -23,7 +23,7 @@
                 <p> {{$post->subtitle}} </p>
 
 
-                <a href=" {{route('post.edit',$post->id)}}">Edit</a>
+                <a href=" {{route('PostEdit',$post->id)}}">Edit</a>
                 <a href="" onclick="
                     if(confirm('Are you sure, You Want to delete this?'))
                     {
