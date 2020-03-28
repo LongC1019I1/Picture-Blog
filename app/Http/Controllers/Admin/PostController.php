@@ -55,7 +55,8 @@ class PostController extends Controller
         $post->save();
         $post->tags()->sync($request->tags);
         $post->categories()->sync($request->categories);
-        return redirect(route('post.index'));
+//        return redirect(route('post.index'));
+        return redirect(route('PostAll'));
     }
 
     public function show($id)

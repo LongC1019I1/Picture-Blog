@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Contract\user\UsersServiceInterface;
+use App\Model\user\category;
+use App\Model\user\tag;
 use App\Model\user\User;
 use Illuminate\Http\Request;
 
@@ -95,6 +97,13 @@ class UsersController extends Controller
 
     }
 
+    public function PostCreate(){
+
+        $tags = tag::all();
+        $categories = category::all();
+        return view('userlist.post.post',compact('tags','categories'));
+
+    }
 
 
 }
