@@ -24,9 +24,9 @@ class UsersController extends Controller
 //        if (!Gate::allows("crud-user")){
 //            abort(403);
 //        }
-        $paginate =10;
+        $paginate = 10;
         $users = $this->userService->all($paginate);
-        return view('admin.User.list',compact('users'));
+        return view('admin.User.list', compact('users'));
     }
 
     public function showFormCreate()
@@ -49,12 +49,12 @@ class UsersController extends Controller
     {
         if ($typeAlert == "success") {
             return array([
-                'message' =>  "The user have been $action",
+                'message' => "The user have been $action",
                 'alert-type' => "$typeAlert"
             ]);
         }
         return array([
-            'message' =>  "Something wrong, try again!",
+            'message' => "Something wrong, try again!",
             'alert-type' => "$typeAlert"
         ]);
     }
@@ -71,7 +71,8 @@ class UsersController extends Controller
         return back()->with($notification);
     }
 
-    public function showUserAll( User $user){
+    public function showUserAll(User $user)
+    {
 
 
         $posts = $user::findOrFail(\Illuminate\Support\Facades\Auth::user()->id)->posts()->get();
@@ -80,41 +81,52 @@ class UsersController extends Controller
 
     }
 
-    public function showUserPrivate( User $user){
+    public function showUserPrivate(User $user)
+    {
 
 
-        $posts = $user::findOrFail(\Illuminate\Support\Facades\Auth::user()->id)->posts()->where('status',NULL)->get();
-
-        return view('userlist.welcome', compact('posts'));
-
-    }
-
-    public function showUserPublic( User $user){
-
-
-        $posts = $user::findOrFail(\Illuminate\Support\Facades\Auth::user()->id)->posts()->where('status',1)->get();
+        $posts = $user::findOrFail(\Illuminate\Support\Facades\Auth::user()->id)->posts()->where('status', NULL)->get();
 
         return view('userlist.welcome', compact('posts'));
 
     }
 
-    public function PostCreate(){
+    public function showUserPublic(User $user)
+    {
 
-        $tags = tag::all();
-        $categories = category::all();
-        return view('userlist.post.post',compact('tags','categories'));
 
-    }
+        $posts = $user::findOrFail(\Illuminate\Support\Facades\Auth::user()->id)->posts()->where('status', 1)->get();
 
-    public function PostEdit($id){
-
-        $post = post::with('tags','categories')->where('id',$id)->first();
-
-        $tags = tag::all();
-        $categories = category::all();
-        return view('userlist.post.edit',compact('tags','categories','post'));
+        return view('userlist.welcome', compact('posts'));
 
     }
 
+    public function PostCreate()
+    {
+
+        $tags = tag::all();
+        $categories = category::all();
+        return view('userlist.post.post', compact('tags', 'categories'));
+
+    }
+
+    public function PostEdit($id)
+    {
+
+        $post = post::with('tags', 'categories')->where('id', $id)->first();
+
+        $tags = tag::all();
+        $categories = category::all();
+        return view('userlist.post.edit', compact('tags', 'categories', 'post'));
+
+    }
+
+    public function ProfileEdit()
+    {
+
+        return view('userlist.profile.edit');
+
+
+    }
 
 }
