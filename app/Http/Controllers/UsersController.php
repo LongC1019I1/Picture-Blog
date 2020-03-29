@@ -78,7 +78,7 @@ class UsersController extends Controller
 
         $posts = $user::findOrFail(\Illuminate\Support\Facades\Auth::user()->id)->posts()->get();
 
-        return view('userlist.welcome', compact('posts'));
+        return view('useracount.welcome', compact('posts'));
 
     }
 
@@ -88,7 +88,7 @@ class UsersController extends Controller
 
         $posts = $user::findOrFail(\Illuminate\Support\Facades\Auth::user()->id)->posts()->where('status', NULL)->get();
 
-        return view('userlist.welcome', compact('posts'));
+        return view('useracount.welcome', compact('posts'));
 
     }
 
@@ -98,7 +98,7 @@ class UsersController extends Controller
 
         $posts = $user::findOrFail(\Illuminate\Support\Facades\Auth::user()->id)->posts()->where('status', 1)->get();
 
-        return view('userlist.welcome', compact('posts'));
+        return view('useracount.welcome', compact('posts'));
 
     }
 
@@ -107,7 +107,7 @@ class UsersController extends Controller
 
         $tags = tag::all();
         $categories = category::all();
-        return view('userlist.post.post', compact('tags', 'categories'));
+        return view('useracount.post.post', compact('tags', 'categories'));
 
     }
 
@@ -118,14 +118,14 @@ class UsersController extends Controller
 
         $tags = tag::all();
         $categories = category::all();
-        return view('userlist.post.edit', compact('tags', 'categories', 'post'));
+        return view('useracount.post.edit', compact('tags', 'categories', 'post'));
 
     }
 
     public function ProfileEdit()
     {
 
-        return view('userlist.profile.edit');
+        return view('useracount.profile.edit');
 
 
     }

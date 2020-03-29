@@ -6,7 +6,12 @@
         </a>
         <img src="{{asset('storage/images/'.Auth::user()->avatar)}}" style="width:45%;" class="w3-round"><br><br>
         <h4><b>{{\Illuminate\Support\Facades\Auth::user()->name}}</b></h4>
-        <p class="w3-text-grey">Template by W3.CSS</p>
+        <p class="w3-text-grey">
+            <?php
+            echo substr(Auth::user()->description,0,100). '...'
+            ?>
+
+        </p>
     </div>
     <div class="w3-bar-block">
         <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>PORTFOLIO</a>

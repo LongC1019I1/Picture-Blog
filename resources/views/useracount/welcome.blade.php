@@ -1,4 +1,4 @@
-@extends('userlist.layouts.app')
+@extends('useracount.layouts.app')
 @section('headSection')
     <style>
         #aboutme { padding-right: 400px; float: left; }
@@ -18,7 +18,7 @@
 
         @foreach($posts as $post)
 
-            <div class="w3-third w3-container w3-margin-bottom">
+            <div class="w3-third w3-container w3-margin-bottom" >
                 <a href="{{route('post',$post->slug)}}">
                     <img  src="{{Storage::disk('local')->url($post->image)}}" alt="Norway"
                          style="width:100%; height: 250px"
@@ -96,9 +96,11 @@
 
         <div class="w3-col m6">
             <table style="width: 1600px">
-                <td width="350px"> <img style="height: 300px"
+                <tr>
+                <td width="350px" style="padding-bottom: 20px"> <img style="height: 300px"
                           src="{{asset('storage/images/'.\Illuminate\Support\Facades\Auth::user()->avatar)}}" alt="Me"
                           style="width:100%"></td>
+
                 <td id="aboutme">
 
                     <p><i class="fa fa-user fa-fw w3-margin-right w3-large w3-text-teal"></i>{{\Illuminate\Support\Facades\Auth::user()->name}}</p>
@@ -109,9 +111,17 @@
                     <p>{{\Illuminate\Support\Facades\Auth::user()->description}}</p>
 
                 </td>
+                </tr>
+                <tr>
+
+                <td width="350px"> <a href="{{route('user.porfile.edit')}}"> <i class="fa fa-edit fa-fw w3-margin-right w3-large w3-text-teal">&nbsp;&nbsp;Edit&nbsp;Profile </i> </a> <td>
+                </tr>
             </table>
+            <br>
+
 
         </div>
+{{--        <i class="fa fa-user fa-fw w3-margin-right w3-large w3-text-teal">--}}
 
     </div>
 

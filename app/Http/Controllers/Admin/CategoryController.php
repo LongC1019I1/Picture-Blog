@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Model\user\category;
 use App\Model\user\tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -34,12 +35,11 @@ class CategoryController extends Controller
     {
         $this->validate($request,[
             'name' => 'required',
-            'slug'=>'required'
         ]);
         $category = new category();
 
         $category->name = $request->name;
-        $category->slug = $request->slug;
+        $category->slug = Str::slug($request->name);
         $category->save();
 
         return redirect(route('category.index'));
@@ -67,7 +67,7 @@ class CategoryController extends Controller
         ]);
         $category = category::find($id);
         $category->name = $request->name;
-        $category->slug = $request->slug;
+        $category->slug = Str::slug($request->name);
         $category->save();
 
         return redirect(route('category.index'));

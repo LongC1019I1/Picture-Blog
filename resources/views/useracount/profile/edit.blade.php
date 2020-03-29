@@ -1,4 +1,4 @@
-@extends('userlist.layouts.app')
+@extends('useracount.layouts.app')
 @section('headSection')
     <style>
         #aboutme {
@@ -25,7 +25,7 @@
 
 
     <!-- First Photo Grid-->
-    <div style="padding-left: 20px" class="w3-row-padding">
+    <div style="padding-left: 73px" class="w3-row-padding">
 
 
             <div class="row">
@@ -36,7 +36,7 @@
                     <div class="col-md-3">
                         <div class="text-center">
 
-                            <img style="height: 200px"
+                            <img style="height: 300px"
                                  src="{{asset('storage/images/'.\Illuminate\Support\Facades\Auth::user()->avatar)}}"
                                  class="avatar img-circle" alt="avatar">
                             <br>
@@ -132,14 +132,14 @@
                             <div class="col-md-8">
                                 <button type="submit" class="btn btn-primary" >Save Change</button>
                                 <span></span>
-                                <input type="reset"  class="btn btn-default" value="Cancel">
+                                <button type="reset"  class="btn btn-default" >Cancel</button>
                             </div>
                         </div>
                 </form>
             </div>
         </div>
     </div>
-  </div>
+
 
 
 

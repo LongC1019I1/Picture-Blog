@@ -15,7 +15,7 @@ Route::prefix('user')->group(function () {
     Route::get('/list', 'UsersController@index')->name('admin.User.index');
     Route::get('/create', 'UsersController@showFormCreate')->name('admin.User.create');
     Route::post('/store', 'UsersController@store')->name('admin.user.store');
-    Route::get('/profile/edit', 'UsersController@ProfileEdit')->name('ProfileEdit');
+    Route::get('/profile/edit', 'UsersController@ProfileEdit')->name('user.porfile.edit');
     Route::post('/profile/update', 'UsersController@ProfileUpdate')->name('user.profile.update');
 
     Route::post('/store', 'UsersController@update')->name('admin.user.store');
@@ -44,6 +44,7 @@ Route::group(['namespace' => 'User'], function () {
     Route::get('post/{post}', 'PostController@post')->name('post');
     Route::get('post/tag/{tag}', 'HomeController@tag')->name('tag');
     Route::get('post/category/{category}', 'HomeController@category')->name('category');
+    Route::get('userdetail/{id}', 'PostController@showUserDetail')->name('user.detail');
 
 });
 

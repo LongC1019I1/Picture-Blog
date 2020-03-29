@@ -73,8 +73,15 @@
                                     <img src="{{asset('storage/images/'.$user[0]->avatar)}}" alt="Image Placeholder" class="img-fluid mb-5">
                                     <div class="bio-body">
                                         <h2>{{$user[0]->name}}</h2>
-                                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem facilis sunt repellendus excepturi beatae porro debitis voluptate nulla quo veniam fuga sit molestias minus.</p>
-                                        <p><a href="#" class="btn btn-primary btn-sm rounded px-4 py-2">Read my bio</a></p>
+                                        <p class="mb-4">
+                                            <?php
+
+                                          echo  substr($user[0]->description,0,250). '...'
+
+                                            ?>
+
+                                        </p>
+                                        <p><a href="{{route('user.detail',$user[0]->id)}}" class="btn btn-primary btn-sm rounded px-4 py-2">Read my bio</a></p>
                                         <p class="social">
                                             <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
                                             <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>
