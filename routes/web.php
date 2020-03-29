@@ -16,6 +16,9 @@ Route::prefix('user')->group(function () {
     Route::get('/create', 'UsersController@showFormCreate')->name('admin.User.create');
     Route::post('/store', 'UsersController@store')->name('admin.user.store');
     Route::get('/profile/edit', 'UsersController@ProfileEdit')->name('ProfileEdit');
+    Route::post('/profile/update', 'UsersController@ProfileUpdate')->name('user.profile.update');
+
+    Route::post('/store', 'UsersController@update')->name('admin.user.store');
 
     //    Route::get('/{id}/edit', 'UserController@showFormEdit')->name('admin_html.user.edit');
 //    Route::post('/{id}/update', 'UserController@update')->name('admin_html.user.update');

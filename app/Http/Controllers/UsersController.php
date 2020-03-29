@@ -8,6 +8,7 @@ use App\Model\user\post;
 use App\Model\user\tag;
 use App\Model\user\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -125,6 +126,39 @@ class UsersController extends Controller
     {
 
         return view('userlist.profile.edit');
+
+
+    }
+
+    public function ProfileUpdate(Request $request )
+    {
+
+        $user = User::find(Auth::user()->id);
+        if ($request->hasFile('avatar'))
+        {
+           $avatar = $request->file('avatar');
+           $avatar_name = date('d-m-Y_H:i:s'). '.' . $avatar->getClientOriginalName();
+           $avatar->storeAs('public/images',$avatar_name);
+        }
+        else{
+            $avatar_name = $user->avatar;
+        }
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->avatar = $avatar_name;
+        $user->job = $request->job;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+
+        $user->description = $request->description;
+        $user->experience = $request->experience;
+        $user->save();
+
+        return redirect(route('PostAll'));
+
+
+
 
 
     }
