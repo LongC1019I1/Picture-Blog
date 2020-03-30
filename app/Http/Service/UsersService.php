@@ -31,13 +31,16 @@ class UsersService implements UsersServiceInterface
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         //lay doi tuong file tu input "image"
-        $file = $request->file('avatar');
-        //luu ten khac cho anh can luu
-        $fileName = $user->name.'.'.$file->getClientOriginalExtension();
-        //luu anh vao duong dan storage/pulic/images -- luon luon luu vao storage nen ko can phai ghi.
-        // cau truc public/path --path la duong dan de luu.
-        $file->storeAs('public/images', $fileName);
-        $user->avatar = $fileName;
+
+        if (!$request->hasFile('avatar')) {
+            $image_name = 'no_image.png';
+        } else {
+            $image = $request->file('image');
+            $image_name = 'images/' . date('d-m-Y_H:i:s') . '.' . $image->getClientOriginalName();
+            $image->storeAs('public/images', $image_name);
+        }
+
+        $user->avatar = $image_name;
 
         $user->role = $request->role;
 

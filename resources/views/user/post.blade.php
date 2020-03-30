@@ -12,12 +12,12 @@
 
 
 
-    <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image:  url('{{Storage::disk('local')->url($post->image)}}'); height: 600px">
+    <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image:  url('{{Storage::disk('local')->url($post->image)}}')">
         <div class="container">
             <div class="row same-height justify-content-center">
                 <div class="col-md-12 col-lg-10">
                     <div class="post-entry text-center">
-                        <span class="post-category text-white bg-success mb-3">Nature</span>
+                        <span class="post-category text-white bg-success mb-3">{{$post->categories->first()->name}}</span>
                         <h1 class="mb-4"><a href="#">{{$post->title}}</a></h1>
                         <div class="post-meta align-items-center text-center">
                             {{--                            <figure class="author-figure mb-0 mr-3 d-inline-block"><img src="images/person_1.jpg" alt="Image" class="img-fluid"></figure>--}}
@@ -41,7 +41,7 @@
                     <div class="row">
 
                         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                            <small>Created at {{ $post->created_at }}</small>
+                            <small style="margin-right: 20px">Created at {{ $post->created_at }}</small>
                             @foreach ($post->categories as $category)
                                 <small class="pull-right" style="margin-right: 20px">
                                     <a href="{{ route('category',$category->slug) }}">{{ $category->name }}</a>
@@ -94,54 +94,57 @@
                             <!-- END sidebar-box -->
                             <div class="sidebar-box">
                                 <h3 class="heading">Popular Posts</h3>
-{{--                                <div class="post-entry-sidebar">--}}
-{{--                                    <ul>--}}
-{{--                                        <li>--}}
-{{--                                            <a href="">--}}
-{{--                                                <img src="images/img_1.jpg" alt="Image placeholder" class="mr-4">--}}
-{{--                                                <div class="text">--}}
-{{--                                                    <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>--}}
-{{--                                                    <div class="post-meta">--}}
-{{--                                                        <span class="mr-2">March 15, 2018 </span>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </a>--}}
-{{--                                        </li>--}}
-{{--                                        <li>--}}
-{{--                                            <a href="">--}}
-{{--                                                <img src="images/img_2.jpg" alt="Image placeholder" class="mr-4">--}}
-{{--                                                <div class="text">--}}
-{{--                                                    <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>--}}
-{{--                                                    <div class="post-meta">--}}
-{{--                                                        <span class="mr-2">March 15, 2018 </span>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </a>--}}
-{{--                                        </li>--}}
-{{--                                        <li>--}}
-{{--                                            <a href="">--}}
-{{--                                                <img src="images/img_3.jpg" alt="Image placeholder" class="mr-4">--}}
-{{--                                                <div class="text">--}}
-{{--                                                    <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>--}}
-{{--                                                    <div class="post-meta">--}}
-{{--                                                        <span class="mr-2">March 15, 2018 </span>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </a>--}}
-{{--                                        </li>--}}
-{{--                                    </ul>--}}
-{{--                                </div>--}}
+                                <div class="post-entry-sidebar">
+                                    <ul>
+                                        <li>
+                                            <a href="{{route('post',$postDoisong->slug)}}">
+                                                <img  style="height: 80px"  src="{{Storage::disk('local')->url($postDoisong->image)}}" alt="Image placeholder" class="mr-4">
+                                                <div class="text">
+                                                    <h4 style="font-size: 15px" >{{$postDoisong->title}}</h4>
+                                                    <div class="post-meta">
+                                                        <span class="mr-2">{{$postDoisong->created_at}}</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="{{route('post',$postSuckhoe->slug)}}">
+                                                <img  style="height: 80px" src="{{Storage::disk('local')->url($postSuckhoe->image)}}" alt="Image placeholder" class="mr-4">
+                                                <div class="text">
+                                                    <h4 style="font-size: 15px">{{$postDoisong->title}}</h4>
+                                                    <div class="post-meta">
+                                                        <span class="mr-2">{{$postSuckhoe->created_at}}</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+
+                                       <li>
+                                            <a href="{{route('post',$postTintuc->slug)}}">
+                                                <img style="height: 80px" src="{{Storage::disk('local')->url($postTintuc->image)}}" alt="Image placeholder" class="mr-4">
+                                                <div class="text">
+                                                    <h4 style="font-size: 15px" >{{$postTintuc->title}}</h4>
+                                                    <div class="post-meta">
+                                                        <span class="mr-2">{{$postTintuc->created_at}}</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </div>
                             </div>
                             <!-- END sidebar-box -->
 
                             <div class="sidebar-box">
                                 <h3 class="heading">Categories</h3>
                                 <ul class="categories">
-                                    <li><a href="http://127.0.0.1:8000/post/category/chinh-tri">Politics</a></li>
-                                    <li><a href="http://127.0.0.1:8000/post/category/tin-tuc">News</a></li>
-                                    <li><a href="http://127.0.0.1:8000/post/category/giai-tri">Entertainment</a></li>
-                                    <li><a href="http://127.0.0.1:8000/post/category/show-biz"> Showbiz</a></li>
-                                    <li><a href="http://127.0.0.1:8000/post/category/suc-khoe">Health</a></li>
+                                    <li><a href="http://127.0.0.1:8000/post/category/chinh-tri">Chính trị</a></li>
+                                    <li><a href="http://127.0.0.1:8000/post/category/tin-tuc">Tin tức</a></li>
+                                    <li><a href="http://127.0.0.1:8000/post/category/giai-tri">Giải trí</a></li>
+                                    <li><a href="http://127.0.0.1:8000/post/category/du-lich">Du lịch</a></li>
+                                    <li><a href="http://127.0.0.1:8000/post/category/suc-khoe">Sức khỏe</a></li>
                                 </ul>
                             </div>
                             <!-- END sidebar-box -->

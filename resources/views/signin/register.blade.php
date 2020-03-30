@@ -32,7 +32,7 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <form class="login100-form validate-form" action="{{route('admin.user.store')}}" method="post" enctype="multipart/form-data">
+            <form class="login100-form validate-form" action="{{route('register')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <span class="login100-form-title p-b-43">
 						Register
@@ -61,11 +61,11 @@
                 <p style="color: red">{{ $message }}</p>
                 @enderror
 
-                <div class="wrap-input100 validate-input">
-                    <input class="input100" type="file" name="avatar">
-                    <span class="focus-input100"></span>
-                    <span class="label-input100">Avatar</span>
-                </div>
+{{--                <div class="wrap-input100 validate-input">--}}
+{{--                    <input class="input100" type="file" name="avatar">--}}
+{{--                    <span class="focus-input100"></span>--}}
+{{--                    <span class="label-input100">Avatar</span>--}}
+{{--                </div>--}}
 
                 <div class="wrap-input100 validate-input" data-validate="Password is required">
                     <input class="input100 @error('password') alert-danger @enderror" type="password" name="password"

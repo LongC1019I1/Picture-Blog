@@ -4,7 +4,13 @@
         <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
             <i class="fa fa-remove"></i>
         </a>
-        <img src="{{asset('storage/images/'.Auth::user()->avatar)}}" style="width:45%;" class="w3-round"><br><br>
+        <h4>
+        <img src="{{asset('storage/images/'.Auth::user()->avatar)}}" style="width:45%;" class="w3-round"><br>
+        <a style="margin-left: 35px; font-size: 15px; color: #78cdd4" href="<?php echo e(route('logout')); ?>">
+            Logout
+        </a>
+            <br>
+            <br>
         <h4><b>{{\Illuminate\Support\Facades\Auth::user()->name}}</b></h4>
         <p class="w3-text-grey">
             <?php
@@ -26,6 +32,7 @@
         <i class="fa fa-twitter w3-hover-opacity"></i>
         <i class="fa fa-linkedin w3-hover-opacity"></i>
     </div>
+
 </nav>
 
 <!-- Overlay effect when opening sidebar on small screens -->

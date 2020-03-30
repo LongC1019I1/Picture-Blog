@@ -42,7 +42,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="subtitle">Post Sub Title</label>
+                                        <label for="subtitle">Description</label>
                                         <input type="text" class="form-control" id="subtitle" name="subtitle" value="{{$post->subtitle}}"
                                                placeholder="Sub Title">
                                     </div>

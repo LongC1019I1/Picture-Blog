@@ -43,12 +43,16 @@
                 <div class="col-8 text-right">
                     <nav class="site-navigation" role="navigation">
                         <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
-                            <li><a href="category.html">Home</a></li>
-                            <li><a href="category.html">Politics</a></li>
-                            <li><a href="category.html">Tech</a></li>
-                            <li><a href="category.html">Entertainment</a></li>
-                            <li><a href="category.html">Travel</a></li>
-                            <li><a href="category.html">Sports</a></li>
+                            <li><a href="{{route('index')}}">Trang chủ</a></li>
+                            <li><a href="{{route('category','chinh-tri')}}">Chính trị</a></li>
+                            <li><a href="{{route('category','lich-su')}}">Lịch sử</a></li>
+                            <li><a href="{{route('category','doi-song')}}">Đời sống</a></li>
+                            <li><a href="{{route('category','suc-khoe')}}">Sức khỏe</a></li>
+                            <li><a href="{{route('category','tin-tuc')}}">Tin tức</a></li>
+                            <li><a href="{{route('category','giai-tri')}}">Giải trí</a></li>
+                            <li><a href="{{route('category','du-lich')}}">Du lịch</a></li>
+                            <li><a href="{{route('sigin')}}">LOGIN</a></li>
+
                             <li class="d-none d-lg-inline-block"><a href="#" class="js-search-toggle"><span class="icon-search"></span></a></li>
                         </ul>
                     </nav>

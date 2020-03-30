@@ -40,14 +40,11 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="subtitle">Post Sub Title</label>
-                                        <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Sub Title">
+                                        <label for="subtitle">Description</label>
+                                        <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Description">
                                     </div>
 
-                                    <div class="form-group">
-                                        <label for="slug">Post Slug</label>
-                                        <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug">
-                                    </div>
+
 
                                 </div>
                                 <div class="col-lg-6">

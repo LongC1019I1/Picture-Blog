@@ -12,12 +12,12 @@ use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
-    protected $userService;
-
-    public function __construct(UsersServiceInterface $userService)
-    {
-        $this->userService = $userService;
-    }
+//    protected $userService;
+//
+//    public function __construct(UsersServiceInterface $userService)
+//    {
+//        $this->userService = $userService;
+//    }
 
     public function index()
     {
@@ -37,6 +37,8 @@ class UsersController extends Controller
 
     public function store(Request $request)
     {
+
+        dd($request);
         if ($this->userService->create($request)) {
             $notification = $this->getToarstrNoti('success', 'create');
         } else {
@@ -46,6 +48,20 @@ class UsersController extends Controller
 //        return back()->with($notification);
     }
 
+
+    public function Get(Request $request)
+    {
+
+        dd($request);
+
+        if ($this->userService->create($request)) {
+            $notification = $this->getToarstrNoti('success', 'create');
+        } else {
+            $notification = $this->getToarstrNoti('error', 'create');
+        }
+        return redirect()->route('signin.index');
+//        return back()->with($notification);
+    }
     public function getToarstrNoti($typeAlert, $action)
     {
         if ($typeAlert == "success") {

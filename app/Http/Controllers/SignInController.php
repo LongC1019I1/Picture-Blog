@@ -21,7 +21,7 @@ class SignInController extends Controller
         ];
 
         if (Auth::attempt($data)){
-            return redirect('/admin/home');
+            return redirect(route('PostAll'));
 
         }
         return back()->with('wrong', "Wrong password! Try again!");
@@ -30,6 +30,6 @@ class SignInController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/signin');
+        return redirect('/');
     }
 }

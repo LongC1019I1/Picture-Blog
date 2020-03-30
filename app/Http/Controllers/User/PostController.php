@@ -19,8 +19,33 @@ class PostController extends Controller
        $user =  DB::table('users')->where('id', $post->user_id)->get();
 
 
+        $postDoisong= DB::table('category_posts')
+            ->join('categories', 'category_posts.category_id', '=', 'categories.id')
+            ->join('posts', 'category_posts.post_id', '=', 'posts.id')
+            ->where('categories.slug', '=', 'doi-song')
+            ->where('status',1)
+            ->inRandomOrder()
+            ->first();
 
-        return view('user.post',compact('post','user'));
+        $postSuckhoe= DB::table('category_posts')
+            ->join('categories', 'category_posts.category_id', '=', 'categories.id')
+            ->join('posts', 'category_posts.post_id', '=', 'posts.id')
+            ->where('categories.slug', '=', 'suc-khoe')
+            ->where('status',1)
+            ->inRandomOrder()
+            ->first();
+
+        $postTintuc= DB::table('category_posts')
+            ->join('categories', 'category_posts.category_id', '=', 'categories.id')
+            ->join('posts', 'category_posts.post_id', '=', 'posts.id')
+            ->where('categories.slug', '=', 'suc-khoe')
+            ->where('status',1)
+            ->inRandomOrder()
+            ->first();
+
+
+
+        return view('user.post',compact('post','user','postDoisong','postTintuc','postSuckhoe'));
     }
 
     public function showUserDetail($id)

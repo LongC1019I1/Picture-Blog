@@ -35,7 +35,6 @@ class PostController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'subtitle' => 'required',
-            'slug' => 'required',
             'body' => 'required',
             'image' => 'required',
         ]);
@@ -49,7 +48,7 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->image = $imageName;
         $post->subtitle = $request->subtitle;
-        $post->slug =$request->slug;
+        $post->slug =Str::slug($request->title);
         $post->body = $request->body;
         $post->status = $request->status;
         $post->user_id = Auth::user()->id;

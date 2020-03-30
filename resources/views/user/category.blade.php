@@ -16,8 +16,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <span>Category</span>
-                    <h3>Sports</h3>
-                    <p>Category description here.. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam error eius quo, officiis non maxime quos reiciendis perferendis doloremque maiores!</p>
+                    <h3>    {{$category->name}}</h3>
                 </div>
             </div>
         </div>
@@ -31,7 +30,7 @@
                         <div class="entry2">
                             <a href="{{route('post',$post->slug)}}"><img src="{{Storage::disk('local')->url($post->image)}}" alt="Image" class="img-fluid rounded"></a>
                             <div class="excerpt">
-                                <span class="post-category text-white bg-secondary mb-3">Politics</span>
+                                <span class="post-category text-white bg-secondary mb-3">{{$category->name}}</span>
 
                                 <h2><a href="{{route('post',$post->slug)}}">{{$post->title}}</a></h2>
                                 <div class="post-meta align-items-center text-left clearfix">
