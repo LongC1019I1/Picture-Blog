@@ -5,9 +5,21 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{asset('blog/fonts/icomoon/style.css')}}">
+<link rel="stylesheet" href="{{asset('blog/css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{asset('blog/css/magnific-popup.css')}}">
+<link rel="stylesheet" href="{{asset('blog/css/jquery-ui.css')}}">
+<link rel="stylesheet" href="{{asset('blog/css/owl.carousel.min.css')}}">
+<link rel="stylesheet" href="{{asset('blog/css/owl.theme.default.min.css')}}">
+<link rel="stylesheet" href="{{asset('blog/css/bootstrap-datepicker.css')}}">
+<link rel="stylesheet" href="{{asset('blog/fonts/flaticon/font/flaticon.css')}}">
+<link rel="stylesheet" href="{{asset('blog/css/aos.css')}}">
+
+<link rel="stylesheet" href="{{asset('blog/css/style.css')}}">
 <style>
-    body, h1, h2, h3, h4, h5, h6 {
-        font-family: "Raleway", sans-serif
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+    #fix ul li {
+        float: left;
     }
 </style>
 
@@ -56,7 +68,34 @@
 
 <div class="w3-main" style="margin-left:300px">
 
+    <header class="site-navbar" role="banner" >
+        <div class="container-fluid">
+            <div class="row align-items-center">
 
+
+
+
+                <div class="row align-items-center">
+                    <div id="fix" class="col-8 text-right">
+                        <nav class="site-navigation" role="navigation">
+                            <ul style="width: 1000px" class="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
+                                <li><a href="{{route('index')}}">Trang chủ</a></li>
+                                <li><a href="{{route('category','chinh-tri')}}">Chính trị</a></li>
+                                <li><a href="{{route('category','lich-su')}}">Lịch sử</a></li>
+                                <li><a href="{{route('category','doi-song')}}">Đời sống</a></li>
+                                <li><a href="{{route('category','suc-khoe')}}">Sức khỏe</a></li>
+                                <li><a href="{{route('category','tin-tuc')}}">Tin tức</a></li>
+                                <li><a href="{{route('category','giai-tri')}}">Giải trí</a></li>
+                                <li><a href="{{route('category','du-lich')}}">Du lịch</a></li>
+                                <li class="d-none d-lg-inline-block"><a href="#" class="js-search-toggle"><span class="icon-search"></span></a></li>
+                            </ul>
+                        </nav>
+                        <a href="#" class="site-menu-toggle js-menu-toggle text-black d-inline-block d-lg-none"><span class="icon-menu h3"></span></a>
+                    </div>
+                </div>
+
+
+    </header>
     <!-- Header -->
     <header id="portfolio">
         <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;"

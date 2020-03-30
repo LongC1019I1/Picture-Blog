@@ -19,6 +19,23 @@ class PostController extends Controller
        $user =  DB::table('users')->where('id', $post->user_id)->get();
 
 
+        $postLichsu= DB::table('category_posts')
+            ->join('categories', 'category_posts.category_id', '=', 'categories.id')
+            ->join('posts', 'category_posts.post_id', '=', 'posts.id')
+            ->where('categories.slug', '=', 'lich-su')
+            ->where('status',1)
+            ->inRandomOrder()
+            ->first();
+
+        $postChinhtri= DB::table('category_posts')
+            ->join('categories', 'category_posts.category_id', '=', 'categories.id')
+            ->join('posts', 'category_posts.post_id', '=', 'posts.id')
+            ->where('categories.slug', '=', 'chinh-tri')
+            ->where('status',1)
+            ->inRandomOrder()
+            ->first();
+
+
         $postDoisong= DB::table('category_posts')
             ->join('categories', 'category_posts.category_id', '=', 'categories.id')
             ->join('posts', 'category_posts.post_id', '=', 'posts.id')
@@ -43,9 +60,25 @@ class PostController extends Controller
             ->inRandomOrder()
             ->first();
 
+        $postGiaitri= DB::table('category_posts')
+            ->join('categories', 'category_posts.category_id', '=', 'categories.id')
+            ->join('posts', 'category_posts.post_id', '=', 'posts.id')
+            ->where('categories.slug', '=', 'giai-tri')
+            ->where('status',1)
+            ->inRandomOrder()
+            ->first();
+
+        $postDulich= DB::table('category_posts')
+            ->join('categories', 'category_posts.category_id', '=', 'categories.id')
+            ->join('posts', 'category_posts.post_id', '=', 'posts.id')
+            ->where('categories.slug', '=', 'du-lich')
+            ->where('status',1)
+            ->inRandomOrder()
+            ->first();
 
 
-        return view('user.post',compact('post','user','postDoisong','postTintuc','postSuckhoe'));
+
+        return view('user.post',compact('post','user','postDoisong','postTintuc','postSuckhoe','postChinhtri','postLichsu','postDulich','postGiaitri'));
     }
 
     public function showUserDetail($id)

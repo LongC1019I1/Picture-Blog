@@ -104,19 +104,24 @@
                     @foreach($posts as $post)
                         <div class="col-lg-4 mb-4">
                             <div class="entry2">
-                                <a href="{{route('post',$post->slug)}}"><img
+                                <a href="{{route('post',$post->slug)}}"><img style="height: 240px"
                                         src="{{Storage::disk('local')->url($post->image)}}" alt="Image"
                                         class="img-fluid rounded"></a>
                                 <div class="excerpt">
-                                    <span class="post-category text-white bg-secondary mb-3">Politics</span>
+
+                                    <?php
+                                    $user = DB::table('users')->where('id', $post->user_id)->get()
+                                    ?>
+                                    <span class="post-category text-white bg-secondary mb-3">{{$post->categories()->first()->name}}</span>
 
                                     <h2><a href="{{route('post',$post->slug)}}">{{$post->title}}</a></h2>
                                     <div class="post-meta align-items-center text-left clearfix">
-                                        <figure class="author-figure mb-0 mr-3 float-left"><img
-                                                src="{{asset('blog/images/person_1.jpg')}}" alt="Image"
+                                        <figure class="author-figure mb-0 mr-3 float-left"><img style="width:50px; height: 50px"
+                                                src="{{asset('storage/images/'.$user[0]->avatar)}}" alt="Image"
                                                 class="img-fluid"></figure>
                                         {{--                                    <span class="d-inline-block mt-1">By <a href="#">{{$post->subtitle}}</a></span>--}}
-                                        <span>&nbsp;-&nbsp; July 19, 2019</span>
+                                        <span style="padding-top: 20px;"><br>
+                                            &nbsp;{{$user[0]->name}}</span>
                                     </div>
 
                                     <p>{{$post->subtitle}}</p>
