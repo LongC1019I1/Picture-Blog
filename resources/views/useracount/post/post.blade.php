@@ -61,14 +61,7 @@
                                         </div>
                                     </div>
                                     <br>
-                                    <div class="form-group" style="margin-top:18px;">
-                                        <label>Select Tags</label>
-{{--                                        <select class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select a State" style="width: 100%;" tabindex="-1" aria-hidden="true" name="tags[]">--}}
-{{--                                            @foreach ($tags as $tag)--}}
-{{--                                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>--}}
-{{--                                            @endforeach--}}
-{{--                                        </select>--}}
-                                    </div>
+
                                     <div class="form-group" style="margin-top:18px;">
                                         <label>Select Category</label>
 
@@ -91,10 +84,11 @@
                                 </div>
                             </div>
                             <!-- /.box-body -->
+<p>&nbsp;</p>
 
                             <div class="box">
                                 <div class="box-header">
-                                    <h3 class="box-title">Write Post Body Here
+                                    <h3  class="box-title">Write Post Body Here
                                         <small>Simple and fast</small>
                                     </h3>
                                     <!-- tools box -->
@@ -108,6 +102,11 @@
                                 <div class="form-group col-md-12">
 
                                     <textarea name="body" class="form-control " id="editor1"></textarea>
+                                </div>
+
+                                <div   class="form-group" style="margin-top:25px; margin-left: 15px; width: 500px">
+                                    <label>Tags</label>
+                                    <input type="text" class="form-control" id="subtitle" name="tags" placeholder="input Tags">
                                 </div>
 {{--                                <div class="box-body pad">--}}
 {{--                                    <textarea name="body" style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" id="editor1"></textarea>--}}

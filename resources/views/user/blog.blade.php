@@ -14,7 +14,8 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <div class="dropdown user user-menu" style="margin-top: 15px">
 
-                        <img style=" margin-left:58px; width: 120px" src="{{asset('storage/images/'.\Illuminate\Support\Facades\Auth::user()->avatar)}}"
+                        <img style=
+                             "margin-left:58px; width: 120px" src="{{asset('storage/images/'.\Illuminate\Support\Facades\Auth::user()->avatar)}}"
                              class="user-image" alt="User Image">
                         <br>
                         <small style="margin-left: 80px">{{\Illuminate\Support\Facades\Auth::user()->name}} </small>
