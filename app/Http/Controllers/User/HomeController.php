@@ -81,9 +81,11 @@ class HomeController extends Controller
         return view('user.blog', compact('posts','postLichsu','postChinhtri','postDoisong','postSuckhoe','postTintuc','postDulich','postGiaitri'));
     }
 
-    public function tag(tag $tag){
+    public function tag(tag $tag, $slug){
 
-        $posts= $tag->posts();
+
+        $posts= DB::table('tags')->where('tags.slug','=',$slug)->posts();
+        dd($posts);
         return view('user.category', compact('posts'));
 
     }
