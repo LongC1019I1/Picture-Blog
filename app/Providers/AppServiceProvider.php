@@ -10,6 +10,13 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+    public function boot(UrlGenerator $url)
+    {
+        if(env('REDIRECT_HTTPS')) {
+            $url->formatScheme('https');
+        }
+    }
+
     /**
      * Register any application services.
      *
@@ -17,17 +24,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
-    }
-
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        $this->app->singleton(UsersRepositoryInterface::class,UsersRepository::class);
-        $this->app->singleton(UsersServiceInterface::class,UsersService::class);
+        if(env('REDIRECT_HTTPS')) {
+            $this->app['request']->server->set('HTTPS', true);
+        }
     }
 }
