@@ -4,12 +4,14 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="{{asset('storage/images/'.\Illuminate\Support\Facades\Auth::user()->avarta)}}" class="img-circle" alt="User Image">
             </div>
-            <div class="pull-left info">
-                <p>Alexander Pierce</p>
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-            </div>
+            @auth
+                <div class="pull-left info">
+                    <span class="username">{{\Illuminate\Support\Facades\Auth::user()->name}}</span>
+                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                </div>
+            @endauth
         </div>
         <!-- search form -->
         <form action="#" method="get" class="sidebar-form">
@@ -30,11 +32,17 @@
                     <li class=""><a href="{{route('post.index')}}"><i class="fa fa-circle-o"></i> Posts </a></li>
                     <li class=""><a href="{{route('category.index')}}"><i class="fa fa-circle-o"></i> Categories </a></li>
                     <li class=""><a href="{{route('tag.index')}}"><i class="fa fa-circle-o"></i> Tags </a></li>
-                    <li class=""><a href="{{route('user.index')}}"><i class="fa fa-circle-o"></i> Users </a></li>
-
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="fa fa-user"></i>
+                    <span>User</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+{{--                    <li><a class="" href="{{asset('admin.user.index')}}">List</a></li>--}}
+                    <li><a class="" href="{{route('admin.User.create')}}">Create</a></li>
+                </ul>
             </li>
-
-
         </ul>
     </section>
     <!-- /.sidebar -->
