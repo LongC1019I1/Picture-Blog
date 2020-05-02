@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\Admin\impl\PostService;
 use App\Model\user\category;
 use App\Model\user\post;
 use App\Model\user\tag;
@@ -12,6 +13,13 @@ use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
+
+    protected $postService;
+
+    public function __construct( PostService $postService)
+    {
+        $this->postService = $postService;
+    }
 
     public function index()
     {

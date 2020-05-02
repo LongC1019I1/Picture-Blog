@@ -2,7 +2,7 @@
 namespace App\Http\Controllers\UserAccount;
 
 use App\Http\Controllers\Controller;
-use App\Http\Service\UsersService;
+use App\Http\Services\UsersService;
 use App\Model\user\category;
 use App\Model\user\post;
 use App\Model\user\tag;

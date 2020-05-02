@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Http\Service;
+namespace App\Http\Services;
 
 
 use App\Contract\ServiceInterface;

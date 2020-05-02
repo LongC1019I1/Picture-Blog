@@ -14,45 +14,40 @@ Route::group(['namespace' => 'UserAccount'], function () {
     Route::post('/register', "RegisterController@register")->name("register");
 
 
+    Route::middleware('checkLogin')->group(function () {
+        Route::prefix('user')->group(function () {
 
-    Route::prefix('user')->group(function () {
-
-        //Controller Post of UserAcount
-        Route::get('/{id}/delete', 'UsersAccountController@delete')->name('admin.User.delete');
-        Route::get('post/show', 'UsersAccountController@showUserAll')->name('PostAll');
-        Route::get('/post/private', 'UsersAccountController@showUserPrivate')->name('PostPrivate');
-        Route::get('/post/public', 'UsersAccountController@showUserPublic')->name('PostPublic');
-        Route::get('/post/create', 'UsersAccountController@PostCreate')->name('UserPost');
-        Route::get('/post/{id}/edit', 'UsersAccountController@PostEdit')->name('PostEdit');
-
-
-        //Controller Profile Edit
-        Route::get('/profile/edit', 'UsersAccountController@ProfileEdit')->name('user.porfile.edit');
-        Route::post('/profile/update', 'UsersAccountController@ProfileUpdate')->name('user.profile.update');
+            //Controller Post of UserAcount
+            Route::get('/{id}/delete', 'UsersAccountController@delete')->name('admin.User.delete');
+            Route::get('post/show', 'UsersAccountController@showUserAll')->name('PostAll');
+            Route::get('/post/private', 'UsersAccountController@showUserPrivate')->name('PostPrivate');
+            Route::get('/post/public', 'UsersAccountController@showUserPublic')->name('PostPublic');
+            Route::get('/post/create', 'UsersAccountController@PostCreate')->name('UserPost');
+            Route::get('/post/{id}/edit', 'UsersAccountController@PostEdit')->name('PostEdit');
 
 
+            //Controller Profile Edit
+            Route::get('/profile/edit', 'UsersAccountController@ProfileEdit')->name('user.porfile.edit');
+            Route::post('/profile/update', 'UsersAccountController@ProfileUpdate')->name('user.profile.update');
+
+        });
     });
+
 });
 
 
 //User
 Route::group(['namespace' => 'User'], function () {
     Route::get('/', 'HomeController@index')->name('index');
-
     Route::get('post/{post}', 'PostController@post')->name('post');
     Route::get('post/tag/{slug}', 'HomeController@tag')->name('tag');
     Route::get('post/category/{category}', 'HomeController@category')->name('category');
     Route::get('userdetail/{id}', 'PostController@showUserDetail')->name('user.detail');
-
-
-
 });
 
 
 //Admin
 Route::middleware('checkLogin')->group(function () {
-
-
     Route::group(['namespace' => 'Admin'], function () {
 
         Route::get('admin/home', 'AdminController@index')->name('admin.home');

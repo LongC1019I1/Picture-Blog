@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\Admin\impl\CategoryService;
 use App\Model\user\category;
 use App\Model\user\tag;
 use Illuminate\Http\Request;
@@ -10,11 +11,13 @@ use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   protected $categoryService;
+
+   public function __construct( CategoryService $categoryService)
+   {
+       $this->categoryService = $categoryService;
+   }
+
     public function index()
     {
         $categories = category::all();
