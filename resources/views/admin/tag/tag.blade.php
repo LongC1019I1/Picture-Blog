@@ -27,7 +27,7 @@
                             <h3 class="box-title">Titles</h3>
                         </div>
 
-                        @include('includes.messages')
+                        @include('useraccount.layouts.includes.messages')
 
                         <form role="form" method="post" action="{{route('tag.store')}}">
                             {{csrf_field()}}

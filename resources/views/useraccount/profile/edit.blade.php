@@ -1,4 +1,4 @@
-@extends('useracount.layouts.app')
+@extends('useraccount.layouts.app')
 @section('headSection')
     <style>
         #aboutme {

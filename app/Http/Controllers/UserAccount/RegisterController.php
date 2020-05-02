@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\UserAccount;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
 use App\User;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ class RegisterController extends Controller
 {
     public function show()
     {
-        return view('signin.register');
+        return view('useraccount.signin.register');
     }
 
     public function register(Request $request)

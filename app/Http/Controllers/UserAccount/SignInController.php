@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\UserAccount;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\RequestFormSignin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,7 +11,7 @@ class SignInController extends Controller
 {
     public function index()
     {
-        return view('signin.signin');
+        return view('useraccount.signin.signin');
     }
 
     public function signin(RequestFormSignin $request)

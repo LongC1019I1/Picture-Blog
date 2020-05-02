@@ -1,8 +1,8 @@
 <?php
+namespace App\Http\Controllers\UserAccount;
 
-namespace App\Http\Controllers;
-
-use App\Contract\user\UsersServiceInterface;
+use App\Http\Controllers\Controller;
+use App\Http\Service\UsersService;
 use App\Model\user\category;
 use App\Model\user\post;
 use App\Model\user\tag;
@@ -10,21 +10,18 @@ use App\Model\user\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class UsersController extends Controller
+class UsersAccountController extends Controller
 {
-//    protected $userService;
-//
-//    public function __construct(UsersServiceInterface $userService)
-//    {
-//        $this->userService = $userService;
-//    }
+
+    protected $userService;
+
+    public function __construct(UsersService $userService)
+    {
+        $this->userService = $userService;
+    }
 
     public function index()
     {
-
-//        if (!Gate::allows("crud-user")){
-//            abort(403);
-//        }
         $paginate = 10;
         $users = $this->userService->all($paginate);
         return view('admin.User.list', compact('users'));
@@ -45,7 +42,6 @@ class UsersController extends Controller
             $notification = $this->getToarstrNoti('error', 'create');
         }
         return redirect()->route('signin.index');
-//        return back()->with($notification);
     }
 
 
@@ -94,7 +90,7 @@ class UsersController extends Controller
 
         $posts = $user::findOrFail(\Illuminate\Support\Facades\Auth::user()->id)->posts()->get();
 
-        return view('useracount.welcome', compact('posts'));
+        return view('useraccount.welcome', compact('posts'));
 
     }
 
@@ -104,7 +100,7 @@ class UsersController extends Controller
 
         $posts = $user::findOrFail(\Illuminate\Support\Facades\Auth::user()->id)->posts()->where('status', NULL)->get();
 
-        return view('useracount.welcome', compact('posts'));
+        return view('useraccount.welcome', compact('posts'));
 
     }
 
@@ -114,7 +110,7 @@ class UsersController extends Controller
 
         $posts = $user::findOrFail(\Illuminate\Support\Facades\Auth::user()->id)->posts()->where('status', 1)->get();
 
-        return view('useracount.welcome', compact('posts'));
+        return view('useraccount.welcome', compact('posts'));
 
     }
 
@@ -123,7 +119,7 @@ class UsersController extends Controller
 
         $tags = tag::all();
         $categories = category::all();
-        return view('useracount.post.post', compact('tags', 'categories'));
+        return view('useraccount.post.post', compact('tags', 'categories'));
 
     }
 
@@ -134,14 +130,14 @@ class UsersController extends Controller
 
         $tags = tag::all();
         $categories = category::all();
-        return view('useracount.post.edit', compact('tags', 'categories', 'post'));
+        return view('useraccount.post.edit', compact('tags', 'categories', 'post'));
 
     }
 
     public function ProfileEdit()
     {
 
-        return view('useracount.profile.edit');
+        return view('useraccount.profile.edit');
 
 
     }

@@ -22,7 +22,7 @@
                     <!-- general form elements -->
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form role="form" method="post" action="{{route('admin.user.store')}}" enctype="multipart/form-data" >
+                        <form role="form" method="post" action="{{route('user.store')}}" enctype="multipart/form-data" >
                             @csrf
                             <div class="box-body">
 
@@ -53,22 +53,6 @@
                                     </div>
                                 </div>
 
-{{--                                <div class="col-lg-6">--}}
-
-
-
-{{--                                    <div class="form-group">--}}
-{{--                                        <label for="image">File input</label>--}}
-{{--                                        <input type="file" name="image" id="image">--}}
-
-{{--                                    </div>--}}
-
-{{--                                    <div class="checkbox">--}}
-{{--                                        <label>--}}
-{{--                                            <input type="checkbox" name="status"> Publish--}}
-{{--                                        </label>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
 
 
                             </div>

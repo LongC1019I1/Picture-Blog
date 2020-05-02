@@ -91,8 +91,7 @@ class PostController extends Controller
 
     }
 
-    public
-    function edit($id)
+    public function edit($id)
     {
         $post = post::with('tags', 'categories')->where('id', $id)->first();
         $tags = tag::all();
@@ -102,8 +101,7 @@ class PostController extends Controller
     }
 
 
-    public
-    function update(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $this->validate($request, [
             'title' => 'required',

@@ -26,7 +26,7 @@
                             <h3 class="box-title">Titles</h3>
                         </div>
 
-                    @include('includes.messages')
+                    @include('useraccount.layouts.includes.messages')
                     <!-- /.box-header -->
                         <!-- form start -->
                         <form role="form" action="{{ route('tag.update',$tag->id) }}" method="post">
