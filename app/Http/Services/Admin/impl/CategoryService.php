@@ -6,6 +6,8 @@ namespace App\Http\Services\Admin\impl;
 
 use App\Http\Repository\Admin\eloquent\CategoryRepo;
 use App\Http\Services\Admin\CategoryServiceInterface;
+use App\Model\user\category;
+use Illuminate\Support\Str;
 
 class CategoryService implements CategoryServiceInterface
 {
@@ -20,26 +22,40 @@ class CategoryService implements CategoryServiceInterface
 
     public function getAll()
     {
-        // TODO: Implement getAll() method.
+       return $this->categoryRepo->getAll();
     }
 
     public function create($request)
     {
-        // TODO: Implement create() method.
+        $request->validate([
+            'name' => 'required',
+        ]);
+        $category = new category();
+        $category->name = $request->name;
+        $category->slug = Str::slug($request->name);
+        $this->categoryRepo->storeOrUpdate($category);
+
     }
 
     public function update($request, $id)
     {
-        // TODO: Implement update() method.
+        $request->validate([
+            'name' => 'required',
+        ]);
+//        $category = category::find($id);
+        $category= $this->categoryRepo->findById($id);
+        $category->name = $request->name;
+        $category->slug = Str::slug($request->name);
+        $this->categoryRepo->storeOrUpdate($category);
     }
 
     public function destroy($id)
     {
-        // TODO: Implement destroy() method.
+        return $this->categoryRepo->delete($id);
     }
 
     public function findById($id)
     {
-        // TODO: Implement findById() method.
+       return $this->categoryRepo->findById($id);
     }
 }

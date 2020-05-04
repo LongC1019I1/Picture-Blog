@@ -20,8 +20,11 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categories = category::all();
+
+        $categories = $this->categoryService->getAll();
+
         return view('admin.category.show',compact('categories'));
+
     }
 
     /**
@@ -36,14 +39,8 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'name' => 'required',
-        ]);
-        $category = new category();
 
-        $category->name = $request->name;
-        $category->slug = Str::slug($request->name);
-        $category->save();
+        $this->categoryService->create($request);
 
         return redirect(route('category.index'));
     }
@@ -51,34 +48,32 @@ class CategoryController extends Controller
 
     public function show($id)
     {
-        //
     }
 
 
     public function edit($id)
     {
-        $category = category::where('id',$id)->first();
+
+
+        $category = $this->categoryService->findById($id);
+
         return view('admin.category.edit',compact('category'));
     }
 
 
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'name' => 'required',
-            'slug' => 'required',
-        ]);
-        $category = category::find($id);
-        $category->name = $request->name;
-        $category->slug = Str::slug($request->name);
-        $category->save();
+
+
+        $this->categoryService->update($request, $id);
 
         return redirect(route('category.index'));
     }
 
     public function destroy($id)
     {
-        category::where('id',$id)->delete();
+
+        $this->categoryService->destroy($id);
         return redirect()->back();
     }
 }
