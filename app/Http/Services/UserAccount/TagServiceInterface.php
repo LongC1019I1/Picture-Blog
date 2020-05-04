@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Http\Services\Admin;
+namespace App\Http\Services\UserAccount;
 
 
 use App\Http\Services\ServicesInterface;

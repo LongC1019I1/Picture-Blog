@@ -12,6 +12,8 @@ Route::group(['namespace' => 'UserAccount'], function () {
     Route::post('/signin', 'SignInController@signIn')->name('sigin');
     Route::get('/register', "RegisterController@show")->name("register.show");
     Route::post('/register', "RegisterController@register")->name("register");
+    //Post Routes
+    Route::resource('admin/post', 'PostController');
 
 
     Route::middleware('checkLogin')->group(function () {
@@ -53,8 +55,7 @@ Route::middleware('checkLogin')->group(function () {
         Route::get('admin/home', 'AdminController@index')->name('admin.home');
         //User Routes
         Route::resource('admin/user', 'UserController');
-        //Post Routes
-        Route::resource('admin/post', 'PostController');
+
         //Tag Routes
         Route::resource('admin/tag', 'TagController');
         //Category Routes

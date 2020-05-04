@@ -1,17 +1,25 @@
 <?php
 
 
-namespace App\Http\Repository\Admin\eloquent;
+namespace App\Http\Repository\UserAccount\eloquent;
 
 
-use App\Http\Repository\Admin\TagRepoInterface;
+use App\Http\Repository\UserAccount\TagRepoInterface;
+use App\Model\user\tag;
 
 class TagRepo implements TagRepoInterface
 {
 
+    protected $tag;
+
+    public function __construct(tag $tag)
+    {
+        $this->tag = $tag;
+    }
+
     public function getAll()
     {
-        // TODO: Implement getAll() method.
+        return $this->tag::all();
     }
 
     public function storeOrUpdate($obj)

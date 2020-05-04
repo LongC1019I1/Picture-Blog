@@ -1,28 +1,24 @@
 <?php
 
 
-namespace App\Http\Services\Admin\impl;
+namespace App\Http\Services\UserAccount\impl;
 
 
-use App\Http\Repository\Admin\eloquent\PostRepo;
-use App\Http\Repository\Admin\eloquent\TagRepo;
-use App\Http\Services\Admin\PostServiceInterface;
+use App\Http\Repository\UserAccount\eloquent\TagRepo;
+use App\Http\Services\UserAccount\TagServiceInterface;
 
-class PostService implements PostServiceInterface
+class TagService implements TagServiceInterface
 {
+    protected $tagRepo;
 
-    protected $postRepo;
-
-    public function __construct(PostRepo $postRepo)
+    public function __construct( TagRepo $tagRepo)
     {
-
-        $this->postRepo = $postRepo;
-
+        $this->tagRepo = $tagRepo;
     }
 
     public function getAll()
     {
-        // TODO: Implement getAll() method.
+      return $this->tagRepo->getAll();
     }
 
     public function create($request)

@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\UserAccount;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\UserAccount\impl\UserAccountService;
 use App\Http\Services\UsersService;
 use App\Model\user\category;
 use App\Model\user\post;
@@ -13,82 +14,26 @@ use Illuminate\Support\Facades\Auth;
 class UsersAccountController extends Controller
 {
 
-    protected $userService;
+    protected $userAccountSerivce;
 
-    public function __construct(UsersService $userService)
+    public function __construct(UserAccountService $userAccountSerivce)
     {
-        $this->userService = $userService;
+
+        $this->userAccountSerivce = $userAccountSerivce;
     }
 
     public function index()
     {
-        $paginate = 10;
-        $users = $this->userService->all($paginate);
+        $users = $this->userAccountSerivce->getAll();
+                dd($users);
         return view('admin.User.list', compact('users'));
     }
 
-    public function showFormCreate()
-    {
-        return view('admin.User.create');
-    }
-
-    public function store(Request $request)
-    {
-
-        dd($request);
-        if ($this->userService->create($request)) {
-            $notification = $this->getToarstrNoti('success', 'create');
-        } else {
-            $notification = $this->getToarstrNoti('error', 'create');
-        }
-        return redirect()->route('signin.index');
-    }
-
-
-    public function Get(Request $request)
-    {
-
-        dd($request);
-
-        if ($this->userService->create($request)) {
-            $notification = $this->getToarstrNoti('success', 'create');
-        } else {
-            $notification = $this->getToarstrNoti('error', 'create');
-        }
-        return redirect()->route('signin.index');
-//        return back()->with($notification);
-    }
-    public function getToarstrNoti($typeAlert, $action)
-    {
-        if ($typeAlert == "success") {
-            return array([
-                'message' => "The user have been $action",
-                'alert-type' => "$typeAlert"
-            ]);
-        }
-        return array([
-            'message' => "Something wrong, try again!",
-            'alert-type' => "$typeAlert"
-        ]);
-    }
-
-
-    public function delete($id)
-    {
-        if ($this->userService->delete($id)) {
-            $notification = $this->getToarstrNoti('success', 'delete');
-        } else {
-            $notification = $this->getToarstrNoti('error', 'delete');
-        }
-
-        return back()->with($notification);
-    }
 
     public function showUserAll(User $user)
     {
 
-
-        $posts = $user::findOrFail(\Illuminate\Support\Facades\Auth::user()->id)->posts()->get();
+        $posts = $this->userAccountSerivce->findPostById();
 
         return view('useraccount.welcome', compact('posts'));
 
@@ -169,10 +114,67 @@ class UsersAccountController extends Controller
 
         return redirect(route('PostAll'));
 
-
-
-
-
     }
+
+
+///////////////////////////////////////// A TUNG
+    public function showFormCreate()
+    {
+        return view('admin.User.create');
+    }
+
+    public function store(Request $request)
+    {
+
+        dd($request);
+        if ($this->userService->create($request)) {
+            $notification = $this->getToarstrNoti('success', 'create');
+        } else {
+            $notification = $this->getToarstrNoti('error', 'create');
+        }
+        return redirect()->route('signin.index');
+    }
+
+
+    public function Get(Request $request)
+    {
+
+        dd($request);
+
+        if ($this->userService->create($request)) {
+            $notification = $this->getToarstrNoti('success', 'create');
+        } else {
+            $notification = $this->getToarstrNoti('error', 'create');
+        }
+        return redirect()->route('signin.index');
+//        return back()->with($notification);
+    }
+    public function getToarstrNoti($typeAlert, $action)
+    {
+        if ($typeAlert == "success") {
+            return array([
+                'message' => "The user have been $action",
+                'alert-type' => "$typeAlert"
+            ]);
+        }
+        return array([
+            'message' => "Something wrong, try again!",
+            'alert-type' => "$typeAlert"
+        ]);
+    }
+
+    public function delete($id)
+    {
+        if ($this->userService->delete($id)) {
+            $notification = $this->getToarstrNoti('success', 'delete');
+        } else {
+            $notification = $this->getToarstrNoti('error', 'delete');
+        }
+
+        return back()->with($notification);
+    }
+
+
+/////////////////////////////////////////
 
 }
