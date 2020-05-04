@@ -1,38 +1,34 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Model\user\category;
+namespace App\Http\Services\UserAccount\impl;
+use App\Http\Repository\UserAccount\eloquent\PostRepo;
+use App\Http\Services\UserAccount\PostServiceInterface;
 use App\Model\user\post;
 use App\Model\user\tag;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
-class PostController extends Controller
+class PostService implements PostServiceInterface
 {
 
-    public function index()
+    protected $postRepo;
+
+
+    public function __construct(PostRepo $postRepo)
     {
-        $posts = post::all()->where('user_id', Auth::user()->id);
-        return view('admin.post.show', compact('posts'));
+        $this->postRepo = $postRepo;
     }
 
-    public function create()
+    public function getAll()
     {
-
-        $tags = tag::all();
-        $categories = category::all();
-        return view('admin.post.post', compact('tags', 'categories'));
+        return $this->postRepo->getAll();
     }
 
-
-    public function store(Request $request)
+    public function create($request)
     {
 
-
-        $this->validate($request, [
+     $request->validate([
             'title' => 'required',
             'subtitle' => 'required',
             'body' => 'required',
@@ -52,19 +48,14 @@ class PostController extends Controller
         $post->body = $request->body;
         $post->status = $request->status;
         $post->user_id = Auth::user()->id;
-        $post->save();
-//        $post->tags()->sync($request->tags);
+        $this->postRepo->storeOrUpdate($post);
         $post->categories()->sync($request->categories);
 
         if ($post) {
             $tagNames = explode(',', $request->get('tags'));
             $tagIds = [];
             foreach ($tagNames as $tagName) {
-                //$post->tags()->create(['name'=>$tagName]);
-                //Or to take care of avoiding duplication of Tag
-                //you could substitute the above line as
 
-//                    $authorModel = Authors::where($column , '=', $id)->first();
                 $tagInPost = tag::where('name', '=', $tagName);
 
                 if ($tagInPost) {
@@ -77,43 +68,19 @@ class PostController extends Controller
                 $tagIds[] = $tag->id;
 
             }
-
-
             $post->tags()->sync($tagIds);
-//            $post->tags()->sync($request->tags);
-            return redirect(route('PostAll'));
         }
-
     }
 
-    public function show($id)
+    public function update($request, $id)
     {
-
-    }
-
-    public
-    function edit($id)
-    {
-        $post = post::with('tags', 'categories')->where('id', $id)->first();
-        $tags = tag::all();
-        $categories = category::all();
-        return view('admin.post.edit', compact('tags', 'categories', 'post'));
-
-    }
-
-
-    public
-    function update(Request $request, $id)
-    {
-        $this->validate($request, [
+        $request->validate([
             'title' => 'required',
             'subtitle' => 'required',
-//            'slug' => 'required',
             'body' => 'required',
         ]);
 
         $post = post::with('tags', 'categories')->where('id', $id)->first();
-
 
         $image = $post->image;
 
@@ -128,7 +95,7 @@ class PostController extends Controller
         $post->slug = Str::slug($request->title);
         $post->body = $request->body;
         $post->status = $request->status;
-//            $post->tags()->sync($request->tags);
+
         $post->categories()->sync($request->categories);
         $post->save();
 
@@ -136,11 +103,7 @@ class PostController extends Controller
             $tagNames = explode(',', $request->get('tags'));
             $tagIds = [];
             foreach ($tagNames as $tagName) {
-                //$post->tags()->create(['name'=>$tagName]);
-                //Or to take care of avoiding duplication of Tag
-                //you could substitute the above line as
 
-//                    $authorModel = Authors::where($column , '=', $id)->first();
                 $tagInPost = tag::where('name', '=', $tagName);
 
                 if ($tagInPost) {
@@ -156,18 +119,20 @@ class PostController extends Controller
 
 
             $post->tags()->sync($tagIds);
-            return redirect(route('PostAll'));
+
 
         }
     }
 
-
     public function destroy($id)
     {
-        post::where('id', $id)->delete();
-        return redirect()->back();
-
+        // TODO: Implement destroy() method.
     }
 
-
+    public function findById($id)
+    {
+        // TODO: Implement findById() method.
+    }
 }
+
+

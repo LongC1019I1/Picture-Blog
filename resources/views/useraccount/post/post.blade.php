@@ -1,4 +1,4 @@
-@extends('useracount.layouts.app')
+@extends('useraccount.layouts.app')
 
 @section('headSection')
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -27,7 +27,7 @@
                     <!-- general form elements -->
                     <div class="box box-primary">
 
-                    @include('includes.messages')
+                    @include('useraccount.layouts.includes.messages')
                     <!-- /.box-header -->
                         <!-- form start -->
                         <form role="form" action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">

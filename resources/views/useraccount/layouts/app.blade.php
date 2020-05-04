@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
-@include('useracount.layouts.head')
+@include('useraccount.layouts.head')
 <body class="w3-light-grey w3-content" style="max-width:1600px">
-@include('useracount.layouts.slidebar')
+@include('useraccount.layouts.slidebar')
 
 <div class="w3-main" style="margin-left:300px">
-    @include('useracount.layouts.header')
+    @include('useraccount.layouts.header')
 @section('main-content')
 @show
 </div>
-@include('useracount.layouts.footer')
+@include('useraccount.layouts.footer')
 </body>
 </html>

@@ -1,13 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\UserAccount;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\Admin\impl\TagService;
 use App\Model\user\tag;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
+    protected $tagService;
+
+    public function __construct( TagService $tagService)
+    {
+        $this->tagService = $tagService;
+    }
 
     public function index()
     {
